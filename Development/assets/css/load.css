@@ -1,0 +1,27 @@
+@keyframes load {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.pre {
+  width: 80px;
+  height: 80px;
+  background-image: url("https://ilustracode.com.br/assets/images/load.png");
+  background-position: center;
+  background-size: contain;
+  animation: load 2s infinite linear;
+}
+
+.box-load {
+  background: #201b2c;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main{
+    display: none;
+}
