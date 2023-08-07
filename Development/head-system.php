@@ -8,7 +8,7 @@
     <link rel="shortcut icon" href="assets/img/icons/compras.png" type="image/x-icon">
     <title>Sistema</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/load.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/home.css">

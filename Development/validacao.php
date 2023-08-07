@@ -19,3 +19,5 @@ if (isset($usuarios[$user]) && password_verify($passDigitada, $usuarios[$user]))
     header('Location: login.php');
     exit();
 }
+
+?>
