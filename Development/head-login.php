@@ -11,8 +11,8 @@
     <title>Sistema</title>
 
     <link rel="stylesheet" href="assets/css/global.css">
-    <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="assets/css/load.css">
+    <link rel="stylesheet" href="assets/css/login.css">
 </head>
 
 <body onLoad="loading()">
