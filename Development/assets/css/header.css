@@ -1,5 +1,7 @@
 header {
   background: #201b2c;
+  min-height: 70px;
+  display: flex;
 }
 
 header li {
@@ -11,7 +13,7 @@ header a {
   color: #fff;
 }
 
-header > .navbar > .title-app > .name > a {
+header > .title-app > .name > a {
   padding: 0.15em;
   border-radius: 6px;
   font-weight: 800;
@@ -22,43 +24,44 @@ header > .navbar > .title-app > .name > a {
   box-shadow: 0 10px 10px -12px #00ff8052;
 }
 
+.navbar {
+  min-height: 70px;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  position: absolute;
+}
+
+.menu-left {
+  padding-left: 1.5em;
+}
+
+.title-app{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.logout {
+  padding-right: 1.5em;
+}
+
 .menu-left,
-.title-app {
+.title-app,
+.logout {
   display: flex;
   align-items: center;
 }
 
-.menu-left {
-  width: 44vw;
-  margin-left: 2.5em;
-}
-
-.title-app {
-  width: 51vw
-}
-
 .title-app > .name {
-  margin-right: 0.75rem;
-}
-
-.icon-user {
-  display: flex;
+  margin-right: 0.5rem;
 }
 
 .icon-user .avatar-circle {
   border-radius: 50%;
   align-items: center;
   display: flex;
-}
-
-.navbar {
-  min-height: 70px;
-  display: flex !important;
-  align-items: center;
-  font-size: 1.15rem;
-  width: 100vw;
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
 }
 
 .nav-menu {
@@ -130,14 +133,20 @@ header > .navbar > .title-app > .name > a {
   }
 }
 
+/*
 @media only screen and (max-width: 600px) {
   .menu-left {
     width: 50%;
-    margin-left: 2.5em;
+    margin-left: 1.5em;
   }
-  
+
   .title-app {
+    margin-left: 2em;
     width: 100%;
   }
-  
+
+  .logout{
+    margin-right: 1.5em;
+  }
 }
+*/
