@@ -3,8 +3,8 @@
         <section class="menu-left">
 
             <ul class="nav-menu">
-                <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Adicionar Mais</a></li>
+                <li class="nav-item"><a class="nav-link" href="ilist.php">Apresentação</a></li>
+                <li class="nav-item"><a class="nav-link" href="">Adicionar Item</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -14,7 +14,7 @@
         </section>
       
         <section class="logout">
-            <a href="index.php">
+            <a href="login.php">
                 <img src="https://img.icons8.com/ios/50/000000/logout-rounded.png" alt="Icone de logout" width="40" height="40">
             </a>
         </section>
