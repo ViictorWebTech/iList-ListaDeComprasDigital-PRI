@@ -1,9 +1,9 @@
 <?php
 
 require 'head-login.php';
+require 'header-login.php';
 
 ?>
-
     <main class="main-login main">
         <section class="left-login">
             <h1 class="name">iList:</h1>
@@ -25,6 +25,8 @@ require 'head-login.php';
                         <input type="password" name="pass" placeholder="Senha" required>
                     </div>
                     <button class="btn-login" type="submit">Login</button>
+                    <p class="text-cadastro">Não tem uma conta?</p>
+                    <a href="cadastro.php" class="link-cadastro">Cadastre-se</a>
 
                 </div>
 

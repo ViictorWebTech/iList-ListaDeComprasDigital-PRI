@@ -1,4 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  background: #2f2841;
+  /*
+  background: #201b2c;
+  */
+  scroll-behavior: smooth;
+}
 
 * {
   margin: 0;
@@ -7,9 +17,5 @@
   font-family: "Noto Sans", sans-serif;
 }
 
-html,
-body {
-  width: 100vw;
-  height: 100vh;
-  background: #201b2c;
-}
+
+
