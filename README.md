@@ -199,9 +199,6 @@ Projeto PRI 2023 - iList - Lista de Compras Digital Para Afetados Pós Covid
 
 
 </main>
-
-<script src="assets/js/load.js"></script>
-<script src="assets/js/header.js"></script>
 </body>
 
 </html>
