@@ -1,5 +1,11 @@
 # iList: É mais que uma solução, é uma mão amiga no caos. 
-Projeto PRI 2023 - iList - Lista de Compras Digital Para Afetados Pós Covid
+
+![GitHub repo size](https://img.shields.io/github/repo-size/ViictorWebTech/ListaDeComprasInterativa-PRI?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/ViictorWebTech/ListaDeComprasInterativa-PRI?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/ViictorWebTech/ListaDeComprasInterativa-PRI?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/ViictorWebTech/ListaDeComprasInterativa-PRI?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/ViictorWebTech/ListaDeComprasInterativa-PRI?style=for-the-badge)
+>Projeto PRI 2023 - iList - Lista de Compras Digital Para Afetados Pós Covid
 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -60,7 +66,7 @@ Projeto PRI 2023 - iList - Lista de Compras Digital Para Afetados Pós Covid
     </section>
     <hr>
     <section class="entre" id="entre">
-        <h1>Venha fazer parte dessa experiência!</h1>
+        <h1> 😄 Venha fazer parte dessa experiência!</h1>
         <section class="left">
             <img src="Development/assets/img/icons/organizacao.svg" alt="Casal se organizando" width="300" height="300">
         </section>
@@ -74,7 +80,7 @@ Projeto PRI 2023 - iList - Lista de Compras Digital Para Afetados Pós Covid
     </section>
     <section class="recursos" id="recursos">
         <section class="topicos">
-            <h1>Recursos Principais:</h1>
+            <h1> 🎯 Recursos Principais:</h1>
         </section>
         <ol>
             <section class="topicos">
@@ -130,7 +136,7 @@ Projeto PRI 2023 - iList - Lista de Compras Digital Para Afetados Pós Covid
     <hr>
     <section class="faq" id="faq">
         <section class="topicos">
-            <h1>FAQ:</h1>
+            <h1> 📖 FAQ:</h1>
         </section>
         <ol>
             <section class="topicos">
@@ -202,4 +208,14 @@ Projeto PRI 2023 - iList - Lista de Compras Digital Para Afetados Pós Covid
 </body>
 
 </html>
+
+
+## 🤝 Colaboradores
+
+Agradecemos às seguintes pessoas que contribuíram para este projeto:
+
+<a href="https://github.com/ViictorWebTech/livecoding-brazil/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ViictorWebTech/livecoding-brazil" />
+</a>
+
 
