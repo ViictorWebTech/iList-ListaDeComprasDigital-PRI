@@ -1,3 +1,4 @@
+
 main {
   display: flex;
   flex-direction: column;
@@ -72,7 +73,7 @@ li::marker {
 }
 
 .left img {
-  width: 70vh;
+  width: 30vw;
 }
 p.cadastro {
   text-align: center;
@@ -91,7 +92,7 @@ a.link-cadastro {
 a.link-cadastro:hover {
   color: #00ff88;
 }
-.recursos {
+.recursos, .faq {
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -101,10 +102,18 @@ a.link-cadastro:hover {
   text-align: start;
 }
 
+
 hr {
-  width: 100%;
+  width: 10%;
   border: 1px solid #f0ffffde;
   margin: 20px 0;
+}
+section hr{
+  width: 100%;
+}
+
+.ftperfil{
+  width: 70%;
 }
 /* Dispositivos menores*/
 @media only screen and (max-width: 900px) {
@@ -146,5 +155,8 @@ hr {
   }
   a.link-cadastro {
     margin: 15px 30px;
+  }
+  .ftperfil{
+    width: 60%;
   }
 }

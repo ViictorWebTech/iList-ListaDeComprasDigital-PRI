@@ -1,5 +1,5 @@
 <?php
 
-header("Location: ilist.php")
+header("Location: apresentacao.php")
 
 ?>
