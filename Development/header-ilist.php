@@ -28,7 +28,7 @@
         <section class="name"><a href="?" class="nav-branding">iList</a></section>
         <section class="icon-user">
             <a href="?" class="nav-branding">
-                <img class="avatar-circle" src="assets/img/icons/organizacao.svg" alt="Casal se organizando" width="40" height="40">
+                <img class="avatar-circle" src="assets/img/icons/organizacao.svg" alt="Casal se organizando" width="50" height="50">
             </a>
         </section>
     </section>

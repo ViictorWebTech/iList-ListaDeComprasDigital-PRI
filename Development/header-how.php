@@ -3,10 +3,10 @@
         <section class="menu-left">
 
             <ul class="nav-menu">
-                <li class="nav-item"><a class="nav-link" href="ilist.php#visao-geral">Visão Geral</a></li>
-                <li class="nav-item"><a class="nav-link" href="ilist.php#recursos">Recursos Principais</a></li>
-                <li class="nav-item"><a class="nav-link" href="ilist.php#faq">FAQ</a></li>
-                <li class="nav-item"><a class="nav-link" href="ilist.php#entre">Entre já!</a></li>
+                <li class="nav-item"><a class="nav-link" href="apresentacao.php#visao-geral">Visão Geral</a></li>
+                <li class="nav-item"><a class="nav-link" href="apresentacao.php#recursos">Recursos Principais</a></li>
+                <li class="nav-item"><a class="nav-link" href="apresentacao.php#faq">FAQ</a></li>
+                <li class="nav-item"><a class="nav-link" href="apresentacao.php#entre">Entre já!</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>

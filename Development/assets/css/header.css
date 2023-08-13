@@ -98,7 +98,7 @@ header > .title-app > .name > a {
   background-color: #fff;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1800px) {
   .hamburger {
     display: block;
   }
@@ -130,6 +130,12 @@ header > .title-app > .name > a {
 
   .nav-menu.active {
     left: 0;
+  }
+}
+
+@media only screen and (max-width: 260){
+  .title-app{
+    display: none;
   }
 }
 

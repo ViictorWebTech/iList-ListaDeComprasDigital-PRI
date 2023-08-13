@@ -62,7 +62,7 @@ header a {
   background-color: #fff;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 900px) {
   .hamburger {
     display: block;
   }

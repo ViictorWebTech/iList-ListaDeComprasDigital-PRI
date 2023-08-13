@@ -41,8 +41,8 @@ require('header-ilist.php');
                 <a href="login.php" class="link-cadastro">iList: É mais que uma solução, é uma mão amiga no caos.</a>
             </section>
         </section>
-        <hr>
     </section>
+        <hr>
     <section class="recursos" id="recursos">
         <section class="topicos">
             <h1>Recursos Principais:</h1>
@@ -126,7 +126,7 @@ require('header-ilist.php');
                     <h2>Posso personalizar minhas listas de compras?</h2>
                 </li>
                 <p>Claro! Você pode adicionar, editar e remover seus itens quando e de onde quiser. Você pode também adicionar sua foto de perfil no processo de criação da conta para deixar no topo de seu aplicativo (ao lado da logomarca).</p>
-                <img src="assets/img/icons/faq/fotoperfil.png" alt="Onde ficará sua foto de perfil">
+                <img class="ftperfil" src="assets/img/icons/faq/fotoperfil.png" alt="Onde ficará sua foto de perfil">
             </section>
             <hr>
             <section class="topicos">
@@ -166,6 +166,7 @@ require('header-ilist.php');
             </section>
         </ol>
     </section>
+    <hr>
 
 
 </main>
