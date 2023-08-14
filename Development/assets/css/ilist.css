@@ -1,9 +1,13 @@
-
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.login {
+  margin-right: 1.5em;
+}
+
 h1,
 h2,
 ol {
@@ -32,10 +36,6 @@ p {
 li::marker {
   font-weight: 800;
 }
-.login {
-  padding-right: 1.5em;
-}
-
 .topicos {
   width: 50vw;
   display: flex;
@@ -48,36 +48,31 @@ li::marker {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  flex-direction: row;
+  width: 50vw;
 }
 
 .left,
-.right,
-.link-entrar {
+.right {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-}
-
-.left,
-.right {
-  width: 50vw;
+  width: 40%;
 }
 
 .left {
-  align-items: end;
-}
-
-.right {
-  align-items: start;
+  align-items: center;
 }
 
 .left img {
-  width: 30vw;
+  width: 300px;
 }
-p.cadastro {
+p.cadastro,
+.link-entrar {
   text-align: center;
 }
+
 a {
   color: #fff;
 }
@@ -85,14 +80,16 @@ a {
 a.link-cadastro {
   margin-top: 5px;
   transition: 0.7s ease;
-  font-size: 24px;
+  font-size: 20px;
   color: #f0ffffde;
 }
 
 a.link-cadastro:hover {
   color: #00ff88;
 }
-.recursos, .faq {
+
+.recursos,
+.faq {
   display: flex;
   justify-content: start;
   flex-direction: column;
@@ -102,21 +99,20 @@ a.link-cadastro:hover {
   text-align: start;
 }
 
-
 hr {
   width: 10%;
   border: 1px solid #f0ffffde;
   margin: 20px 0;
 }
-section hr{
+section hr {
   width: 100%;
 }
 
-.ftperfil{
+.ftperfil {
   width: 70%;
 }
 /* Dispositivos menores*/
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   html,
   body {
     height: 100vh;
@@ -139,24 +135,31 @@ section hr{
   }
 
   .entre {
-    flex-direction: column;
+    width: 90vw;
   }
-  .left {
-    width: 100%;
-    height: auto;
-  }
+
   .right {
     width: 100%;
     height: auto;
   }
-  .left img {
-    margin-bottom: 10px;
+
+  .left {
     width: 100%;
   }
+
+  .left img {
+    margin-bottom: 10px;
+    width: 60vw;
+  }
+  p.cadastro,
+  .link-entrar {
+    text-align: start;
+  }
+
   a.link-cadastro {
     margin: 15px 30px;
   }
-  .ftperfil{
+  .ftperfil {
     width: 60%;
   }
 }

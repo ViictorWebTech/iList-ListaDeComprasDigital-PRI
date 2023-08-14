@@ -1,3 +1,7 @@
+html, body{
+    overflow-x: hidden;
+}
+
 img.how{
     width: 20vw;
     display: flex;
