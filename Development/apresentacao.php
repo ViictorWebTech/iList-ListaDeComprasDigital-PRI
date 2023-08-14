@@ -33,7 +33,7 @@ require('header-ilist.php');
     <section class="entre" id="entre">
         <h1>Venha fazer parte dessa experiência!</h1>
         <section class="left">
-            <img src="assets/img/icons/organizacao.svg" alt="Casal se organizando" width="300" height="300">
+            <img class="casal-org" src="assets/img/icons/organizacao.svg" alt="Casal se organizando">
         </section>
         <section class="right">
             <p class="cadastro">Clique no link abaixo para começar:</p>
@@ -42,7 +42,7 @@ require('header-ilist.php');
             </section>
         </section>
     </section>
-        <hr>
+    <hr>
     <section class="recursos" id="recursos">
         <section class="topicos">
             <h1>Recursos Principais:</h1>

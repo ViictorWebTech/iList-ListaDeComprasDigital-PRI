@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap");
 html,
 body {
-  width: 100vw;
-  height: 100vh;
   background: #2f2841;
   /*
   background: #201b2c;
@@ -15,7 +13,19 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: "Noto Sans", sans-serif;
+  user-select: none;
 }
 
+::-webkit-scrollbar {
+  background: transparent;
+  width: 10px;
+}
 
+::-webkit-scrollbar-thumb {
+  background: rgba(38, 32, 52, 0.7);
+  border-radius: 10px;
+}
 
+::-webkit-scrollbar-thumb:hover {
+  background-color: #00000056;
+}

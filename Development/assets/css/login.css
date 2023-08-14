@@ -1,4 +1,5 @@
-html, body{
+html,
+body {
   width: 100vw;
   height: 100vh;
 }
@@ -79,12 +80,13 @@ html, body{
   outline: none;
 }
 
-.textfield label, p.text-cadastro {
+.textfield label,
+p.text-cadastro {
   color: #f0ffffde;
   margin-bottom: 10px;
 }
 
-.textfield input::placeholder{
+.textfield input::placeholder {
   color: #f0ffff94;
 }
 
@@ -104,8 +106,7 @@ html, body{
   box-shadow: 0 10px 40px -12px #00ff8052;
 }
 
-
-.card-login a{
+.card-login a {
   text-decoration: none;
   color: #fff;
 }
