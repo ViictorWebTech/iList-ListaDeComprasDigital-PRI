@@ -15,18 +15,18 @@ require 'header-login.php';
 
 
                 <div class="card-login">
-                    <h1>LOGIN</h1>
+                    <h1>CADASTRE-SE</h1>
                     <div class="textfield">
-                        <label for="user">Usuário</label>
+                        <label for="user">Insira seu nome de usuário:</label>
                         <input type="text" name="user" placeholder="Usuário" required>
                     </div>
                     <div class="textfield">
-                        <label for="pass">Senha</label>
+                        <label for="pass">Crie uma senha:</label>
                         <input type="password" name="pass" placeholder="Senha" required>
                     </div>
-                    <button class="btn-login" type="submit">Entrar</button>
-                    <p class="text-cadastro">Não tem uma conta?</p>
-                    <a href="cadastro.php" class="link-cadastro">Cadastre-se</a>
+                    <button class="btn-login" type="submit">Cadastrar-se</button>
+                    <p class="text-cadastro">Já possui uma conta?</p>
+                    <a href="login.php" class="link-cadastro">Entre</a>
 
                 </div>
 
