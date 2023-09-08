@@ -15,7 +15,7 @@
 
         <section class="logout">
             <a href="login.php">
-                <img src="https://img.icons8.com/ios/50/000000/logout-rounded.png" alt="Icone de logout" width="40" height="40">
+                <img src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/60/external-left-exit-direction-as-digital-backward-navigation-login-green-tal-revivo.png" alt="Icone de logout">
             </a>
         </section>
 
