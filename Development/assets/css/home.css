@@ -7,3 +7,19 @@ html, body{
 body {
   background: #2f2841;
 }
+
+.itens{
+  background: #77ffc0;;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.item{
+  background: #2f2841;
+  width: 100%;
+
+}

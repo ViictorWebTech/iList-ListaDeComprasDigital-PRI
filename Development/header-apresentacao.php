@@ -18,7 +18,7 @@
 
         <section class="login">
             <a href="login.php">
-                <img src="https://img.icons8.com/ios/50/000000/login-rounded.png" alt="Icone de login" width="40" height="40">
+                <img src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/60/external-enter-direction-arrow-towards-rightward-orientation-pointer-login-green-tal-revivo.png" alt="Icone de login">
             </a>
         </section>
 

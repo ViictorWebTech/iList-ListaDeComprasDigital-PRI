@@ -17,7 +17,7 @@ require 'header-login.php';
                 <div class="card-login">
                     <h1>CADASTRE-SE</h1>
                     <div class="textfield">
-                        <label for="user">Insira seu nome de usuário:</label>
+                        <label for="user">Crie um nome de usuário:</label>
                         <input type="text" name="user" placeholder="Usuário" required>
                     </div>
                     <div class="textfield">

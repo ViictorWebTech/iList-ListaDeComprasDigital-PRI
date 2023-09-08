@@ -7,7 +7,7 @@ require 'header-login.php';
     <main class="main-login main">
         <section class="left-login">
             <h1 class="name">iList:</h1>
-            <h1 class="turn">Conheça agora, a mais nova ferramenta de lista de compras.</h1>
+            <h1 class="turn">É mais que uma solução, é uma mão amiga no caos.</h1>
             <img class="left-login-image" src="assets/img/icons/organizacao.svg" alt="Casal se organizando">
         </section>
         <form action="validacao.php" method="post">
