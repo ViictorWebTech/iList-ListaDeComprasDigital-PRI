@@ -1,0 +1,86 @@
+.form-add-item {
+  margin-top: 1.5em;
+  width: 100%;
+  padding: 30px 35px;
+  background: #2f2841;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px #00000056;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-add-item h1 {
+  color: #00ff88;
+  font-weight: 800;
+}
+
+.main-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-form {
+  width: 100%;
+  padding: 16px 0;
+  margin: 25px;
+  margin-bottom: 0.25em;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 3px;
+  color: #2b134b;
+  cursor: pointer;
+}
+.btn-add {
+  background: #00ff88;
+  box-shadow: 0 10px 40px -12px #00ff8052;
+}
+.btn-cancel {
+  background: #ff1e00;
+  box-shadow: 0 10px 40px -12px #ff000052;
+}
+.textfield {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 10px 0;
+}
+.textfield input {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  background: #514869;
+  color: #f0ffffde;
+  font-size: 12pt;
+  box-shadow: 0px 10px 40px #00000056;
+  outline: none;
+}
+
+.textfield label {
+  color: #f0ffffde;
+  margin-bottom: 10px;
+}
+
+.textfield input::placeholder {
+  color: #f0ffff94;
+}
+
+@media only screen and (max-width: 900px) {
+  .main-add {
+    flex-direction: column;
+  }
+
+  .form-add-item {
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}

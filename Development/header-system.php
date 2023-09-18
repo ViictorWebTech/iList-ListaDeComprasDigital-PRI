@@ -3,8 +3,9 @@
         <section class="menu-left">
 
             <ul class="nav-menu">
+            <li class="nav-item"><a class="nav-link" href="home.php">Tela Inicial</a></li>
+                <li class="nav-item"><a class="nav-link" href="add-item.php">Adicionar Item</a></li>
                 <li class="nav-item"><a class="nav-link" href="how-to-add.php" target="_blank">Como Instalar o Aplicativo?</a></li>
-                <li class="nav-item"><a class="nav-link" href="">Adicionar Item</a></li>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>

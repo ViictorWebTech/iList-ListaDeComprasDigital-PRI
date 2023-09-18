@@ -6,8 +6,13 @@
 .pre {
   width: 80px;
   height: 80px;
-  background-image: url(../img/icons/loading.png);
-  background-position: center;
+
+  /* Imagem load branco */
+  /*background-image: url(../img/icons/loading.png);*/
+
+  /* Imagem verde */
+    background-image: url("https://ilustracode.com.br/assets/images/load.png");
+   background-position: center;
   background-size: contain;
   animation: load 2s infinite linear;
 }
