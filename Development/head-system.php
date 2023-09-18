@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="assets/css/load.css">
     <link rel="stylesheet" href="assets/css/header.css">
     <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/add-item.css">
 </head>
 
 <body onLoad="loading()">
