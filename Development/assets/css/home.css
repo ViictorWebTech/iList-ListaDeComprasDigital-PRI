@@ -1,25 +1,88 @@
-
-html, body{
-  width: 100vw;
-  height: 100vh;
-}
-
 body {
   background: #2f2841;
 }
 
-.itens{
-  background: #77ffc0;;
+.main-itens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.listagem {
+  margin-top: 1.5em;
+  width: 50%;
+  padding: 30px 35px;
+  background: #2f2841;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px #00000056;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.listagem h2 {
+  color: #00ff88;
+  font-weight: 800;
+}
+
+.itens {
+  background: #77ffc0;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  margin: 10px 0;
+  padding: 1em;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px -12px #00ff8052;
 
 }
 
-.item{
+.itens h3{
+  display: flex;
+  
+}
+
+.item {
   background: #2f2841;
   width: 100%;
+  padding: 1.25em;
+  margin: 0.25em;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px #00000079;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.item img{
+  border-radius: 50px;
+  margin-right: .5em;
+  box-shadow: 0 10px 40px #000000ab;
+}
+
+.nome-item, .nome-mercado, .preco{
+  color: #77ffc0;
+  font-size: 25px;
+  margin: 0.5em;
+}
+
+
+@media only screen and (max-width: 900px) {
+  .main-itens {
+    flex-direction: column;
+  }
+
+  .listagem {
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .itens {
+  width: 100%;
+  }
 
 }
