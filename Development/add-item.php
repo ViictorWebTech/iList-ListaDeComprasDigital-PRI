@@ -1,5 +1,7 @@
 <?php
 
+
+$links_menu = '<li class="nav-item"><a class="nav-link" href="home.php">Tela Inicial</a></li>';
 require 'head-system.php';
 require 'header-system.php';
 
