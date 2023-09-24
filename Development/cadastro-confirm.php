@@ -46,7 +46,7 @@ if($result == true){
   //Deu certo
   ?>
   <h1>Perfil adicionado com sucesso!</h1>
-  <img class="img-item" width="50" height="50" src="<?= $urlfoto_usuario; ?>" alt="<?= $nome; ?>" />
+  <img class="img-item" width="50" height="50" src="<?= $urlfoto_usuario; ?>" alt="<?= $nome_usuario; ?>" />
   <h4>Nome: <span class="atributo-item"><?= $nome_usuario; ?></span></h4>
   <h4>Email: <span class="atributo-item"><?= $email; ?></span></h4>
   <h4>Senha Hash: <span class="atributo-item"><?= $senha_hash; ?></span></h4>
