@@ -15,8 +15,24 @@
     <link rel="stylesheet" href="assets/css/apresentacao.css">
 
 </head>
+<?php
+if(!function_exists("autenticado")){
+    ?>
+    <body>
+        
+    
+    <br>
+    <h1>Atenção, você esqueceu o require do arquivo \'logica-autenticacao.php\'!</h1>
 
+    <?php
+    die();
+}else{
+    ?>
 <body onLoad="loading()">
     <div class="box-load">
         <div class="pre"></div>
     </div>
+
+<?php
+}
+?>

@@ -13,9 +13,27 @@
     <link rel="stylesheet" href="assets/css/load.css">
     <link rel="stylesheet" href="assets/css/header-login.css">
     <link rel="stylesheet" href="assets/css/login.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/add-item.css">
 </head>
+<?php
+if(!function_exists("autenticado")){
+    ?>
+    <body>
+        
+    
+    <br>
+    <h1>Atenção, você esqueceu o require do arquivo \'logica-autenticacao.php\'!</h1>
 
+    <?php
+    die();
+}else{
+    ?>
 <body onLoad="loading()">
     <div class="box-load">
         <div class="pre"></div>
     </div>
+
+<?php
+}
+?>
