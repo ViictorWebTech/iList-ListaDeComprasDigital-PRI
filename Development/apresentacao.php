@@ -1,5 +1,9 @@
 <?php
 
+
+session_start();
+require 'logica-autenticacao.php';
+
 require('head-apresentacao.php');
 
 require('header-apresentacao.php');
