@@ -3,7 +3,7 @@
         <section class="menu-left">
 
             <ul class="nav-menu">
-                <?=$links_menu?>
+                <?= $links_menu ?>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -13,7 +13,7 @@
         </section>
 
         <section class="logout">
-            <a href="login.php">
+            <a href="logout.php">
                 <img src="https://img.icons8.com/external-tal-revivo-green-tal-revivo/60/external-left-exit-direction-as-digital-backward-navigation-login-green-tal-revivo.png" alt="Icone de logout">
             </a>
         </section>
@@ -24,7 +24,17 @@
         <section class="name"><a href="?" class="nav-branding">iList</a></section>
         <section class="icon-user">
             <a href="?" class="nav-branding">
-                <img class="avatar-circle" src="https://d1fdloi71mui9q.cloudfront.net/5MJ2xszwQD6cXigBY58V_35738fa8d3xSsx2Y" alt="Avatar de perfil do usuário" width="40" height="40">
+                <?php
+                if (!autenticado()) {
+                ?>
+                    <img class="avatar-circle" src="assets/img/icons/organizacao.svg" alt="Ícone do aplicativo" width="40" height="40">
+                <?php
+                } else {
+                ?>
+                    <img class="avatar-circle" src="<?= urlfoto_usuario(); ?>" alt="Avatar de perfil de <?= nome_usuario(); ?>" width="40" height="40">
+                <?php
+                }
+                ?>
             </a>
         </section>
     </section>

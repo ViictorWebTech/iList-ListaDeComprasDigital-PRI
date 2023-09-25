@@ -3,7 +3,8 @@
         <section class="menu-left">
 
             <ul class="nav-menu">
-                <li class="nav-item"><a class="nav-link" href="apresentacao.php">Apresentação</a></li>
+                <?= $links_menu ?>
+
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>

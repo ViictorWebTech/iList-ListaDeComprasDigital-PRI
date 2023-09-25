@@ -15,6 +15,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .left-login,
@@ -59,7 +60,6 @@ body {
   font-weight: 800;
 }
 
-
 .textfield {
   width: 100%;
   display: flex;
@@ -68,7 +68,6 @@ body {
   justify-content: center;
   margin: 10px 0;
 }
-
 
 .textfield input {
   width: 100%;
@@ -91,7 +90,6 @@ p.text-cadastro {
 .textfield input::placeholder {
   color: #f0ffff94;
 }
-
 
 .btn-login {
   width: 100%;
@@ -121,6 +119,10 @@ a.link-cadastro {
 
 a.link-cadastro:hover {
   color: #00ff88;
+}
+
+.login-confirm h4 {
+  color: #77ffc0;
 }
 
 /*
