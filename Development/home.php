@@ -19,17 +19,26 @@ $sql = "SELECT i.id_item, i.nome, i.urlfoto, i.nome_mercado, i.preco FROM itens 
 $stmt = $conn->prepare($sql);
 $result = $stmt->execute([$id_usuario]);
 
-if(!autenticado()){
+if (!autenticado()) {
 
-$_SESSION['restrito'] = true;
-redireciona("login.php");
-die();
+    $_SESSION['restrito'] = true;
+    redireciona("login.php");
+    die();
 }
-
 ?>
 
+<style>
+    .listagem {
+        visibility: hidden;
+    }
+</style>
 
-    <main class="main main-itens">
+<main class="main main-add main-itens">
+    <div class="item-confirm centralizar-texto">
+        <h1>Não há itens em sua tabela.</h1>
+        <hr class="hr-mb">
+        <h4>Adicione Itens para mostrar.</h4>
+    </div>
 
 
     <div class="listagem">
@@ -39,29 +48,41 @@ die();
 
                 <thead class="item">
                     <tr class="atributo-item">
-                        <th scope="col" style="width: 10%;">Foto</th>
-                        <th scope="col" style="width: 30%;">Item</th>
-                        <th scope="col" style="width: 35%;">Mercado</th>
-                        <th scope="col" style="width: 10%;">Preço</th>
-                        <th scope="col" style="width: 15%;" colspan="2"></th>
+                        <th class="atr-foto">Foto</th>
+                        <th class="atr-nome">Item</th>
+                        <th class="atr-mercado">Mercado</th>
+                        <th class="atr-preco">Preço</th>
+                        <th class="atr-botao" colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody class="item">
 
+
+
+
                     <?php
                     while ($row = $stmt->fetch()) {
                     ?>
+                        <style>
+                            .listagem {
+                                visibility: visible;
+                            }
+
+                            .item-confirm {
+                                display: none;
+                            }
+                        </style>
                         <tr>
-                            <td><img class="img-item" src="<?= $row["urlfoto"] ?>" alt="<?= $row["nome"] ?>" width="50" height="50"></td>
-                            <td class="atributo-item"><?= $row["nome"] ?></td>
-                            <td class="atributo-item"><?= $row["nome_mercado"] ?></td>
-                            <td class="atributo-item">R$<?= $row["preco"] ?></td>
-                            <td>
+                            <td><img class="img-item atr-foto" src="<?= $row["urlfoto"] ?>" alt="<?= $row["nome"] ?>" width="50" height="50"></td>
+                            <td class="atributo-item atr-nome"><?= $row["nome"] ?></td>
+                            <td class="atributo-item atr-mercado"><?= $row["nome_mercado"] ?></td>
+                            <td class="atributo-item atr-preco">R$<?= $row["preco"] ?>,00</td>
+                            <td class="atr-botao">
                                 <a class="botao" href="editar-item.php?id_item=<?= $row["id_item"] ?>">
                                     <img width="50" height="50" src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-edit-100-most-used-icons-flaticons-flat-flat-icons.png" alt="Botão de Editar Item" />
                                 </a>
                             </td>
-                            <td>
+                            <td class="atr-botao">
                                 <a class="botao" href="excluir-item.php?id_item=<?= $row["id_item"] ?>" onclick="if(!confirm('Tem certeza que deseja excluir?')) return false;">
                                     <img width="50" height="50" src="https://img.icons8.com/fluency/48/delete-forever.png" alt="Botão de Deletar" />
                                 </a>
@@ -83,7 +104,6 @@ die();
 </main>
 
 <?php
-
 
 
 

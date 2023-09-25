@@ -10,7 +10,7 @@
   align-items: center;
   flex-direction: column;
 }
-.item-confirm{  
+.item-confirm {
   margin-top: 1.5em;
   padding: 30px 35px;
   background: #2f2841;
@@ -20,17 +20,18 @@
   margin-bottom: 1.5em;
 }
 
-.form-add-item h1, .item-confirm h1, .item-confirm h4 {
+.form-add-item h1,
+.item-confirm h1,
+.item-confirm h4 {
   color: #00ff88;
   max-width: 100%;
   word-wrap: break-word;
 }
 
-
-.form-add-item h1, .item-confirm h1{
+.form-add-item h1,
+.item-confirm h1 {
   font-weight: 800;
 }
-
 
 .main-add {
   display: flex;
@@ -94,7 +95,8 @@
     flex-direction: column;
   }
 
-  .form-add-item, .item-confirm {
+  .form-add-item,
+  .item-confirm {
     margin: 0;
     width: 100%;
     border-radius: 0;

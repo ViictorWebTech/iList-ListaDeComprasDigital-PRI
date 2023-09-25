@@ -11,8 +11,8 @@
   /*background-image: url(../img/icons/loading.png);*/
 
   /* Imagem verde */
-    background-image: url("https://ilustracode.com.br/assets/images/load.png");
-   background-position: center;
+  background-image: url("https://ilustracode.com.br/assets/images/load.png");
+  background-position: center;
   background-size: contain;
   animation: load 2s infinite linear;
 }
@@ -27,6 +27,8 @@
   align-items: center;
 }
 
-header, main, footer{
-    display: none;
+header,
+main,
+footer {
+  display: none;
 }

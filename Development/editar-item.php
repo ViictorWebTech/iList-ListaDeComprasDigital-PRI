@@ -68,9 +68,9 @@ if (!$rowItem) {
                 <div class="form-add-item">
                     <h1>Editar Item</h1>
                     <hr class="hr-mb">
-                    
-                    
-                    <img class="img-item" width="50" height="50" src="<?= $rowItem['urlfoto']; ?>" alt="<?= $rowItem['nome']; ?>" id="image-preview"/>
+
+
+                    <img class="img-item" width="50" height="50" src="<?= $rowItem['urlfoto']; ?>" alt="<?= $rowItem['nome']; ?>" id="image-preview" />
 
 
                     <input type="hidden" name="id_item" id="id_item" value="<?= $id_item; ?>" required>
@@ -80,7 +80,7 @@ if (!$rowItem) {
                     </div>
                     <div class="textfield">
                         <label for="urlfoto">Você pode adicionar a URL de uma Foto ou Imagem do produto</label>
-                        <input type="url" id="urlfoto" name="urlfoto" placeholder="URL da imagem" value="<?= $rowItem['urlfoto']; ?>" required onchange="imagePreview(this.value)" >
+                        <input type="url" id="urlfoto" name="urlfoto" placeholder="URL da imagem" value="<?= $rowItem['urlfoto']; ?>" required onchange="imagePreview(this.value)">
                     </div>
                     <div class="textfield">
                         <label for="nome_mercado">Nome do Mercado</label>
