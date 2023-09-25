@@ -1,16 +1,15 @@
 <?php
-
-
 session_start();
 require 'logica-autenticacao.php';
 
 if(autenticado()){
-header("Location: home.php");
+redireciona('home.php');
+die();
 }
 
 else{
 
-header("Location: apresentacao.php");
+    redireciona('logout.php');
+redireciona('apresentacao.php');
+die();
 }
-
-?>

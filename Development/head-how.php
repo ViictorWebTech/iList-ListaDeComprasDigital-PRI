@@ -17,23 +17,25 @@
 
 </head>
 <?php
-if(!function_exists("autenticado")){
-    ?>
+if (!function_exists("autenticado")) {
+?>
+
     <body>
-        
-    
-    <br>
-    <h1>Atenção, você esqueceu o require do arquivo \'logica-autenticacao.php\'!</h1>
+
+
+        <br>
+        <h1>Atenção, você esqueceu o require do arquivo \'logica-autenticacao.php\'!</h1>
 
     <?php
     die();
-}else{
+} else {
     ?>
-<body onLoad="loading()">
-    <div class="box-load">
-        <div class="pre"></div>
-    </div>
 
-<?php
-}
-?>
+        <body onLoad="loading()">
+            <div class="box-load">
+                <div class="pre"></div>
+            </div>
+
+        <?php
+    }
+        ?>

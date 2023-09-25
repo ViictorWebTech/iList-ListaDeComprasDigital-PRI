@@ -37,14 +37,14 @@ header > .title-app > .name > a {
   margin-left: 1.5em;
 }
 
-.title-app{
+.title-app {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .logout {
-  padding-right: 1.5em;
+  padding-right: 0.75em;
 }
 
 .menu-left,
@@ -130,11 +130,12 @@ header > .title-app > .name > a {
 
   .nav-menu.active {
     left: 0;
+    width: 100vw;
   }
 }
 
-@media only screen and (max-width: 260){
-  .title-app{
+@media only screen and (max-width: 260) {
+  .title-app {
     visibility: hidden;
   }
 }

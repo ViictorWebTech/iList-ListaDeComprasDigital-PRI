@@ -3,7 +3,7 @@
         <section class="menu-left">
 
             <ul class="nav-menu">
-                <?=$links_menu?>
+                <?= $links_menu ?>
             </ul>
             <div class="hamburger">
                 <span class="bar"></span>
@@ -25,13 +25,13 @@
         <section class="icon-user">
             <a href="?" class="nav-branding">
                 <?php
-    if(!autenticado()){
-        ?>
-        <img class="avatar-circle" src="assets/img/icons/organizacao.svg" alt="Ícone do aplicativo" width="40" height="40">
-        <?php
-    }else{
+                if (!autenticado()) {
                 ?>
-                <img class="avatar-circle" src="<?= urlfoto_usuario(); ?>" alt="Avatar de perfil de <?= nome_usuario();?>" width="40" height="40">
+                    <img class="avatar-circle" src="assets/img/icons/organizacao.svg" alt="Ícone do aplicativo" width="40" height="40">
+                <?php
+                } else {
+                ?>
+                    <img class="avatar-circle" src="<?= urlfoto_usuario(); ?>" alt="Avatar de perfil de <?= nome_usuario(); ?>" width="40" height="40">
                 <?php
                 }
                 ?>

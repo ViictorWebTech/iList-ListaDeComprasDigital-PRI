@@ -20,65 +20,64 @@ $stmt = $conn->prepare($sql);
 $stmt->execute([$email]);
 
 $row = $stmt->fetch();
-?>    
+?>
 
 <main class="main-login main">
-<section class="left-login">
+  <section class="left-login">
     <h1 class="name">iList:</h1>
     <h1 class="turn">Conheça agora, a mais nova ferramenta de lista de compras.</h1>
     <img class="left-login-image" src="assets/img/icons/organizacao.svg" alt="Casal se organizando">
-</section>
+  </section>
 
-    <section class="right-login">
+  <section class="right-login">
 
-    
+
     <div class="card-login item-confirm">
-                    <h1>CONFIRMAÇÃO DE LOGIN</h1>
-                    <hr class="hr-mb">
+      <h1>CONFIRMAÇÃO DE LOGIN</h1>
+      <hr class="hr-mb">
 
-                <?php
-if(password_verify($senha, $row['senha'])){
-  //Deu certo
-  
-$_SESSION["email"] = $email;
-$_SESSION["nome_usuario"] = $row['nome_usuario'];
-$_SESSION["urlfoto_usuario"] = $row['urlfoto_usuario'];
-$_SESSION["id_usuario"] = $row['id_usuario'];
+      <?php
+      if (password_verify($senha, $row['senha'])) {
+        //Deu certo
+
+        $_SESSION["email"] = $email;
+        $_SESSION["nome_usuario"] = $row['nome_usuario'];
+        $_SESSION["urlfoto_usuario"] = $row['urlfoto_usuario'];
+        $_SESSION["id_usuario"] = $row['id_usuario'];
+      ?>
+        <h1>Perfil logado com sucesso!</h1>
+
+        <h4>Email: <span class="atributo-item"><?= $email; ?></span></h4>
+    </div>
+  <?php
+      } else {
+        //Não deu certo, erro
+
+        unset($_SESSION["email"]);
+        unset($_SESSION["nome"]);
   ?>
-  <h1>Perfil logado com sucesso!</h1>
-  
-  <h4>Email: <span class="atributo-item"><?=$email;?></span></h4>
-</div>
-<?php
-} else {
-//Não deu certo, erro
+    <h1>Falha ao efetuar login.</h1>
+    <h4>Usuário ou Senha incorretos</h4>
+    </div>
 
-unset($_SESSION["email"]);
-unset($_SESSION["nome"]);
-?>
-  <h1>Falha ao efetuar login.</h1>
-  <h4>Usuário ou Senha incorretos</h4>
-</div>
+  <?php
 
-<?php
+      }
+  ?>
 
-}
-?> 
-
-</section>
+  </section>
 
 </main>
 
 
 <?php
-if(autenticado()){
+if (autenticado()) {
   header('Location: home.php');
-}else{
+} else {
   $_SESSION['erro-login'] = true;
-redireciona("login.php");
-die();
+  redireciona("login.php");
+  die();
 }
 require 'footer-login.php';
 
 ?>
-
