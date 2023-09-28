@@ -45,7 +45,9 @@ require 'header-login.php';
                 </div>
                 <div class="textfield">
                     <label for="urlfoto_usuario">Insira uma URL/Link para foto de perfil:</label>
+
                     <input type="url" name="urlfoto_usuario" id="urlfoto_usuario" placeholder="Insira uma URL/Link de uma imagem">
+
                 </div>
                 <button class="btn-login" type="submit">Cadastrar-se</button>
                 <p class="text-cadastro">Já possui uma conta?</p>
