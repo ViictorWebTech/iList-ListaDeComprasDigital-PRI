@@ -14,6 +14,7 @@ require 'header-system.php';
 require 'conexao.php';
 
 $id_usuario = id_usuario();
+$valor_final = 0;
 
 $sql = "SELECT i.id_item, i.nome, i.urlfoto, i.nome_mercado, i.preco FROM itens i INNER JOIN usuarios u ON u.id_usuario = i.id_usuario WHERE u.id_usuario = ? ORDER BY id_item";
 $stmt = $conn->prepare($sql);
@@ -89,9 +90,15 @@ if (!autenticado()) {
                             </td>
                         </tr>
                     <?php
+                    $valor_final += $row["preco"];
                     }
                     ?>
                 </tbody>
+                <tfoot class="item">
+                    <tr>
+                        <th class="atributo-item" colspan="6">Valor Final Estimado: R$<?= $valor_final; ?>,00 </th>
+                    </tr>
+                </tfoot>
 
             </table>
         </section>

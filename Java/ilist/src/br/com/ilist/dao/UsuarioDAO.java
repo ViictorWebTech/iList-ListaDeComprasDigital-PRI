@@ -1,8 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+
+
+
 package br.com.ilist.dao;
 
 /**
@@ -10,34 +9,34 @@ package br.com.ilist.dao;
  * @author Aluno
  */
 
-import br.com.ilist.dto.ItemDTO;
+
+
+
 import br.com.ilist.dto.UsuarioDTO;
 import java.sql.*;
 
-
-public class ItemDAO {
-
+public class UsuarioDAO {
     
-//Método construtor da classe
-public ItemDAO(){
+    
+    //Método construtor da classe
+public UsuarioDAO(){
 }    
 
 private ResultSet rs = null;
 private Statement stmt = null;
 
 
-public boolean inserirItem(ItemDTO itemDTO){
+public boolean inserirUsuario(UsuarioDTO usuarioDTO){
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
         
-        String comando = "Insert into itens (nome, "
-                + "preco, nome_mercado) values ( " 
-                + "'" + itemDTO.getNome() + "', " 
-                + itemDTO.getPreco() + "', "
-                + itemDTO.getNome_mercado() + "', "
-                + itemDTO.getId_usuario() + "', ) ";
+        String comando = "Insert into usuarios(nome_usuario, "
+                + "email, senha) values ( " 
+                + "'" + usuarioDTO.getNome_usuario() + "', " 
+                + usuarioDTO.getEmail() + "', "
+                + usuarioDTO.getSenha() + "', ) ";
         
         stmt.execute(comando.toUpperCase());
         
@@ -55,17 +54,17 @@ public boolean inserirItem(ItemDTO itemDTO){
     }//Fecha finally
 } //Fecha método inserirItem
 
-public boolean editarItem(ItemDTO itemDTO){
+public boolean editarUsuario(UsuarioDTO usuarioDTO){
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
         
-        String comando = "UPDATE Itens "
-                + "SET nome = '" + itemDTO.getNome() + "',"
-                + "preco = '" + itemDTO.getPreco() + "',"
-                + "nome_mercado = '" + itemDTO.getNome_mercado() 
-                + "' WHERE id_item = '" + itemDTO.getId_item() + "';";
+        String comando = "UPDATE usuarios "
+                + "SET nome_usuario = '" + usuarioDTO.getNome_usuario() + "', "
+                + "senha = '" + usuarioDTO.getSenha() + "',"
+                + "email = '" + usuarioDTO.getEmail() 
+                + "' WHERE id_usuario = '" + usuarioDTO.getId_usuario() + "';";
         
         stmt.execute(comando.toUpperCase());
         
@@ -83,14 +82,14 @@ public boolean editarItem(ItemDTO itemDTO){
     }//Fecha finally
 } //Fecha método editarItem
 
-public boolean removerItem(ItemDTO itemDTO){
+public boolean removerUsuario(UsuarioDTO usuarioDTO){
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
         
-        String comando = "DELETE FROM itens"
-                + "' WHERE id_item = '" + itemDTO.getId_item()
+        String comando = "DELETE FROM usuarios"
+                + " WHERE id_usuario = '" + usuarioDTO.getId_usuario()
                 + "';";
         
         ConexaoDAO.con.commit();
@@ -107,29 +106,28 @@ public boolean removerItem(ItemDTO itemDTO){
     }//Fecha finally
 } //Fecha método removerItem
 
-public boolean selecionarItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO){
+public ResultSet selecionarUsuario(UsuarioDTO usuarioDTO, int opcao){
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
         
-        String comando = "SELECT * FROM itens i INNER JOIN usuarios u" 
-                + "ON u.id_usuario = i.id_usuario"
-                + "' WHERE u.id_usuario = '" + usuarioDTO.getId_usuario() + "' "
-                + "ORDER BY '" + itemDTO.getNome() + "';";
+        String comando = "SELECT * FROM usuarios"
+                + "' WHERE nome like '" + usuarioDTO.getNome_usuario() + "' "
+                + "ORDER BY '" + usuarioDTO.getNome_usuario() + "';";
         
         ConexaoDAO.con.commit();
         
         stmt.close();
-        return true;
+        return rs;
     }//Fecha Try
    catch (Exception e) {
         System.out.println(e.getMessage());
-        return false;
+        return rs;
     }//Fecha catch
     finally{
         ConexaoDAO.CloseDB();
     }//Fecha finally
 } //Fecha método removerItem
-
-}//Fecha classe ItemDAO
+    
+}
