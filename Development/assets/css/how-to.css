@@ -1,15 +1,16 @@
-html, body{
-    overflow-x: hidden;
+html,
+body {
+  overflow-x: hidden;
 }
 
-img.how{
-    width: 20vw;
-    display: flex;
-    flex-direction: column;
+img.how {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
 }
 
 @media only screen and (max-width: 900px) {
-img.how{
+  img.how {
     width: 40vw;
-}
+  }
 }

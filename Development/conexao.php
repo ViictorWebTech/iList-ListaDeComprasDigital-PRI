@@ -2,9 +2,9 @@
 $conf = parse_ini_file("config.ini");
 
 $string_connection = $conf["driver"] .
-        ":dbname=" . $conf["database"] .
-          ";host=" . $conf["server"] .
-          ";port=" . $conf["port"];
+    ":dbname=" . $conf["database"] .
+    ";host=" . $conf["server"] .
+    ";port=" . $conf["port"];
 
 try {
     $conn = new PDO(

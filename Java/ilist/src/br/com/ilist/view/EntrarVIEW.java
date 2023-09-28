@@ -38,6 +38,11 @@ public class EntrarVIEW extends javax.swing.JInternalFrame {
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/organizacao.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
