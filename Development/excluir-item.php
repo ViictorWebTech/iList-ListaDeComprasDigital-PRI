@@ -1,13 +1,13 @@
 <?php
 session_start();
 require 'logica-autenticacao.php';
-if(!autenticado()){
+if (!autenticado()) {
 
     $_SESSION['restrito'] = true;
     redireciona("login.php");
     die();
-    }
-    
+}
+
 
 $links_menu = '<li class="nav-item"><a class="nav-link" href="home.php">Tela Inicial</a></li><li class="nav-item"><a class="nav-link" href="add-item.php">Adicionar Item</a></li>';
 require 'head-system.php';
@@ -16,20 +16,20 @@ require 'header-system.php';
 require 'conexao.php';
 $id_item = filter_input(INPUT_GET, "id_item", FILTER_SANITIZE_NUMBER_INT);
 
-if(empty($id_item)){
-    ?>
+if (empty($id_item)) {
+?>
     <main class="main main-add">
-    <div class="item-confirm centralizar-texto">
+        <div class="item-confirm centralizar-texto">
 
-    <h1>Falha ao excluir.</h1>
-    <hr class="hr-mb">
-    <h4>ID do produto está vazio.</h4>
-</div>
+            <h1>Falha ao excluir.</h1>
+            <hr class="hr-mb">
+            <h4>ID do produto está vazio.</h4>
+        </div>
 
-</main>
+    </main>
 
 <?php
-require 'footer-system.php';
+    require 'footer-system.php';
     exit;
 }
 

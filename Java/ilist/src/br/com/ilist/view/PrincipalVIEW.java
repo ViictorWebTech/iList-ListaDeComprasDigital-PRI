@@ -5,10 +5,6 @@
  */
 package br.com.ilist.view;
 
-/**
- *
- * @author Aluno
- */
 
 import java.awt.Image;
 import java.awt.Graphics;
