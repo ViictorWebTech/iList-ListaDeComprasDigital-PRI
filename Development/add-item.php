@@ -26,7 +26,7 @@ if (!autenticado()) {
             <h1>Adicionar Item</h1>
 
             <img class="img-item" width="50" height="50" src="" alt="" id="image-preview" style="display: none;" />
-            <input type="hidden" name="id_usuario" id="id_usuario" value="<?= id_usuario(); ?>">
+          
             <div class="textfield">
                 <label for="user">Nome</label>
                 <input type="text" id="nome" name="nome" placeholder="Nome do Item" required>

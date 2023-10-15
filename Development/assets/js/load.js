@@ -3,6 +3,7 @@ function loading() {
   document.getElementsByClassName("main")[0].style.display = "flex";
 }
 
+
 /*
 var body = document.querySelectorAll('body');
 

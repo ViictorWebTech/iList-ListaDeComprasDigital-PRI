@@ -15,7 +15,7 @@ require 'head-system.php';
 require 'header-system.php';
 
 require 'conexao.php';
-$id_usuario = filter_input(INPUT_POST, "id_usuario", FILTER_SANITIZE_NUMBER_INT);
+$id_usuario = id_usuario();
 $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
 $urlfoto = filter_input(INPUT_POST, "urlfoto", FILTER_SANITIZE_URL);
 $nome_mercado = filter_input(INPUT_POST, "nome_mercado", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -64,7 +64,7 @@ $result = $stmt->execute([$id_usuario, $nome, $urlfoto, $nome_mercado, $preco]);
             //Não deu certo, erro
             $errorArray = $stmt->errorInfo();
 ?>
-    <h1>Falha ao efeutar gravação.</h1>
+    <h1>Falha ao efetuar gravação.</h1>
     <p><?= $errorArray[2]; ?></p>
     </div>
 
@@ -78,8 +78,12 @@ $result = $stmt->execute([$id_usuario, $nome, $urlfoto, $nome_mercado, $preco]);
 
 
 
-
 <?php
+
+if ($result == true) {
+    redireciona("home.php");
+    die();
+}
 
 require 'footer-system.php'
 

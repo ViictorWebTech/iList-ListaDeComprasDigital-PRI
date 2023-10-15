@@ -22,12 +22,13 @@ $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_SPECIAL_CHARS);
 $urlfoto = filter_input(INPUT_POST, "urlfoto", FILTER_SANITIZE_URL);
 $nome_mercado = filter_input(INPUT_POST, "nome_mercado", FILTER_SANITIZE_SPECIAL_CHARS);
 $preco = filter_input(INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_INT);
+$id_usuario = id_usuario();
 
 
-$sql = "UPDATE itens SET nome = ?, urlfoto = ?, nome_mercado = ?, preco = ? WHERE id_item = ?";
+$sql = "UPDATE itens SET nome = ?, urlfoto = ?, nome_mercado = ?, preco = ? WHERE id_item = ? AND id_usuario = ?";
 
 $stmt = $conn->prepare($sql);
-$result = $stmt->execute([$nome, $urlfoto, $nome_mercado, $preco, $id_item]);
+$result = $stmt->execute([$nome, $urlfoto, $nome_mercado, $preco, $id_item, $id_usuario]);
 $count = $stmt->rowCount();
 
 ?>
@@ -91,6 +92,10 @@ $count = $stmt->rowCount();
 
 <?php
 
+if ($result == true && $count >= 1) {
+    redireciona("home.php");
+    die();
+} 
 require 'footer-system.php'
 
 ?>

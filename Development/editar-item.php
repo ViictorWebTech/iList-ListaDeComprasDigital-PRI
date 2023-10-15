@@ -15,6 +15,7 @@ require 'header-system.php';
 
 
 $id_item = filter_input(INPUT_GET, "id_item", FILTER_SANITIZE_NUMBER_INT);
+$id_usuario = id_usuario();
 
 if (empty($id_item)) {
 ?>
@@ -36,10 +37,10 @@ if (empty($id_item)) {
 
 require 'conexao.php';
 
-$sql = "SELECT nome, urlfoto, nome_mercado, preco FROM itens WHERE id_item = ?";
+$sql = "SELECT nome, urlfoto, nome_mercado, preco FROM itens WHERE id_item = ? AND id_usuario = ?";
 
 $stmt = $conn->prepare($sql);
-$result = $stmt->execute([$id_item]);
+$result = $stmt->execute([$id_item, $id_usuario]);
 
 
 $rowItem = $stmt->fetch();

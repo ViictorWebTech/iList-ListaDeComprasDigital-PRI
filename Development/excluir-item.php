@@ -15,6 +15,7 @@ require 'header-system.php';
 
 require 'conexao.php';
 $id_item = filter_input(INPUT_GET, "id_item", FILTER_SANITIZE_NUMBER_INT);
+$id_usuario = id_usuario();
 
 if (empty($id_item)) {
 ?>
@@ -34,10 +35,10 @@ if (empty($id_item)) {
 }
 
 
-$sql = "DELETE FROM itens WHERE id_item = ?";
+$sql = "DELETE FROM itens WHERE id_item = ? AND id_usuario = ?";
 
 $stmt = $conn->prepare($sql);
-$result = $stmt->execute([$id_item]);
+$result = $stmt->execute([$id_item, $id_usuario]);
 
 $count = $stmt->rowCount();
 
@@ -85,6 +86,11 @@ $count = $stmt->rowCount();
 
 
 <?php
+
+if ($result == true && $count >= 1) {
+    redireciona("home.php");
+    die();
+} 
 
 require 'footer-system.php'
 
