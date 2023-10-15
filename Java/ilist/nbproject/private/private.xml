@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Guerreiro-2Info/Java/ilist/src/br/com/ilist/dao/UsuarioDAO.java</file>
-            <file>file:/D:/Guerreiro-2Info/Java/ilist/src/br/com/ilist/ctr/UsuarioCTR.java</file>
-            <file>file:/D:/Guerreiro-2Info/Java/ilist/src/br/com/ilist/view/CadastrarVIEW.java</file>
-            <file>file:/D:/Guerreiro-2Info/Java/ilist/src/br/com/ilist/dto/UsuarioDTO.java</file>
-            <file>file:/D:/Guerreiro-2Info/Java/ilist/src/br/com/ilist/view/ItemVIEW.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/CadastrarVIEW.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/PrincipalVIEW.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/dao/ItemDAO.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/ctr/ItemCTR.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/dao/ConexaoDAO.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/ItemVIEW.java</file>
         </group>
     </open-files>
 </project-private>

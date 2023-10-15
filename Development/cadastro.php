@@ -27,6 +27,7 @@ require 'header-login.php';
 
             <div class="card-login">
                 <h1>CADASTRE-SE</h1>
+                <img class="img-item" width="50" height="50" src="" alt="" id="image-preview" style="display: none;" />
                 <div class="textfield">
                     <label for="nome_usuario">Crie um nome de usuário:</label>
                     <input type="text" name="nome_usuario" id="nome_usuario" placeholder="Usuário" required>
@@ -45,9 +46,7 @@ require 'header-login.php';
                 </div>
                 <div class="textfield">
                     <label for="urlfoto_usuario">Insira uma URL/Link para foto de perfil:</label>
-
-                    <input type="url" name="urlfoto_usuario" id="urlfoto_usuario" placeholder="Insira uma URL/Link de uma imagem">
-
+                    <input type="url" name="urlfoto_usuario" id="urlfoto_usuario" placeholder="Insira uma URL/Link de uma imagem" onchange="imagePreview(this.value)">
                 </div>
                 <button class="btn-login" type="submit">Cadastrar-se</button>
                 <p class="text-cadastro">Já possui uma conta?</p>

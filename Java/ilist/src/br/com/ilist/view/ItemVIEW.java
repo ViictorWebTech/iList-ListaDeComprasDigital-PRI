@@ -9,13 +9,36 @@ package br.com.ilist.view;
  *
  * @author Aluno
  */
+import java.awt.Dimension;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.sql.ResultSet;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import br.com.ilist.dto.ItemDTO;
+import br.com.ilist.ctr.ItemCTR;
+import br.com.ilist.ctr.UsuarioCTR;
+import br.com.ilist.dto.UsuarioDTO;
+
 public class ItemVIEW extends javax.swing.JInternalFrame {
+
+    ItemDTO itemDTO = new ItemDTO();
+    ItemCTR itemCTR = new ItemCTR();
+//    UsuarioDTO usuarioDTO = new UsuarioDTO();
+//    UsuarioCTR usuarioCTR = new UsuarioCTR();
+
+    ResultSet rs;
+    int gravar_alterar;
+    DefaultTableModel modelo_jtl_consultar_item;
 
     /**
      * Creates new form ItemVIEW
      */
     public ItemVIEW() {
         initComponents();
+
+        liberaCampos(false);
+        modelo_jtl_consultar_item = (DefaultTableModel) jtl_consultar_item.getModel();
     }
 
     /**
@@ -32,18 +55,18 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
         btnCadastrar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        preco = new javax.swing.JTextField();
+        nome = new javax.swing.JTextField();
+        nome_mercado = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        pesquisa_nome = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jtl_consultar_item = new javax.swing.JTable();
+        btnPesquisar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        btnAdicionar = new javax.swing.JButton();
+        Novo = new javax.swing.JButton();
         btnRemover = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
@@ -65,21 +88,21 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Nome do Mercado:");
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        preco.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                precoActionPerformed(evt);
             }
         });
 
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                nomeActionPerformed(evt);
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        nome_mercado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                nome_mercadoActionPerformed(evt);
             }
         });
 
@@ -97,9 +120,9 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextField1))
+                    .addComponent(nome)
+                    .addComponent(preco, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(nome_mercado))
                 .addGap(44, 44, 44))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(0, 69, Short.MAX_VALUE)
@@ -114,14 +137,14 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nome_mercado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -134,25 +157,28 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Pesquisar");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        pesquisa_nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                pesquisa_nomeActionPerformed(evt);
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtl_consultar_item.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Item na Lista", "Mercado", "Preço"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtl_consultar_item);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/pesquisar.png"))); // NOI18N
+        btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/pesquisar.png"))); // NOI18N
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -164,9 +190,9 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
                         .addContainerGap()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pesquisa_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -177,17 +203,22 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(34, 34, 34)
+                        .addComponent(pesquisa_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnPesquisar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
 
-        btnAdicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/novo.png"))); // NOI18N
-        btnAdicionar.setText("Adicionar");
+        Novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/novo.png"))); // NOI18N
+        Novo.setText("Adicionar");
+        Novo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NovoActionPerformed(evt);
+            }
+        });
 
         btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/excluir.png"))); // NOI18N
         btnRemover.setText("Remover");
@@ -202,13 +233,18 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
 
         btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/salvar.png"))); // NOI18N
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(btnAdicionar)
+                .addComponent(Novo)
                 .addGap(18, 18, 18)
                 .addComponent(btnRemover)
                 .addGap(18, 18, 18)
@@ -222,7 +258,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdicionar)
+                    .addComponent(Novo)
                     .addComponent(btnRemover)
                     .addComponent(btnExcluir)
                     .addComponent(btnSalvar))
@@ -258,36 +294,148 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void nome_mercadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nome_mercadoActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_nome_mercadoActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void pesquisa_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesquisa_nomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_pesquisa_nomeActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void precoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_precoActionPerformed
+
+    private void nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeActionPerformed
 
     private void btnExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExcluirMouseClicked
         // TODO add your handling code here:
-    
+
     }//GEN-LAST:event_btnExcluirMouseClicked
 
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if (gravar_alterar == 1) {
+            gravar();
+            gravar_alterar = 0;
+        } else {
+            if (gravar_alterar == 2) {
+                alterar();
+                preencheTabela(pesquisa_nome.getText());
+                gravar_alterar = 0;
+            } else {
+                JOptionPane.showMessageDialog(null, "Erro no Sistema!!!");
+            }
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        preencheTabela(pesquisa_nome.getText().toUpperCase());
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoActionPerformed
+        gravar_alterar = 1;
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NovoActionPerformed
+
+    private void gravar() {
+
+        try {
+//            itemDTO.setId_usuario(itemDTO.getId_usuario());
+            itemDTO.setNome(nome.getText());
+            itemDTO.setNome_mercado(nome_mercado.getText());
+            itemDTO.setPreco(preco.getText());
+
+            JOptionPane.showMessageDialog(null,
+                    itemCTR.inserirItem(itemDTO)
+            );
+
+        } catch (Exception e) {
+            System.out.println("Erro ao gravar" + e.getMessage()
+            );
+        }
+    }
+
+    private void alterar() {
+
+        try {
+
+            itemDTO.setNome(nome.getText());
+            itemDTO.setNome_mercado(nome_mercado.getText());
+            itemDTO.setPreco(preco.getText());
+
+            JOptionPane.showMessageDialog(null,
+                    itemCTR.editarItem(itemDTO)
+            );
+
+        } catch (Exception e) {
+            System.out.println("Erro ao alterar" + e.getMessage()
+            );
+        }
+    }
+
+    private void preencheTabela(String nome) {
+        try {
+            modelo_jtl_consultar_item.setNumRows(0);
+
+            itemDTO.setNome(nome);
+//            rs = itemCTR.selecionarItem(itemDTO, usuarioDTO, 1);
+            rs = itemCTR.selecionarItem(itemDTO, 1);
+            while (rs.next()) {
+                modelo_jtl_consultar_item.addRow(new Object[]{
+                    rs.getString("nome"),
+                    rs.getString("nome_mercado"),
+                    rs.getString("preco"),
+                });
+            }
+        } catch (Exception erTab) {
+            System.out.println("Erro SQL: " + erTab);
+        }
+    }
+    
+    private void preencheCampos(int id_item){
+        try{
+            itemDTO.setId_item(id_item);
+            rs = itemCTR.selecionarItem(itemDTO, 2);
+            if(rs.next()){
+                limpaCampos();
+                
+                nome.setText(rs.getString("nome"));
+                nome_mercado.setText(rs.getString("nome_mercado"));
+                preco.setText(rs.getString("preco"));
+                
+                gravar_alterar = 2;
+                liberaCampos(true);
+            }
+        }
+        catch(Exception erTab){
+            System.out.println("Erro SQL: "+erTab);
+        }
+    }
+    private void liberaCampos(boolean a){
+        nome.setText("");
+        nome_mercado.setText("");
+        preco.setText("");
+    }
+    
+    private void limpaCampos(){
+        nome.setText("");
+        nome_mercado.setText("");
+        preco.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton Novo;
     private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnRemover;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -296,10 +444,10 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTable jtl_consultar_item;
+    private javax.swing.JTextField nome;
+    private javax.swing.JTextField nome_mercado;
+    private javax.swing.JTextField pesquisa_nome;
+    private javax.swing.JTextField preco;
     // End of variables declaration//GEN-END:variables
 }

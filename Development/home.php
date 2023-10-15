@@ -74,7 +74,17 @@ if (!autenticado()) {
                             }
                         </style>
                         <tr>
-                            <td><img class="img-item atr-foto" src="<?= $row["urlfoto"] ?>" alt="<?= $row["nome"] ?>" width="50" height="50"></td>
+                            <?php
+                            if (!$row["urlfoto"]) {
+                            ?>
+                                <td><img class="img-item atr-foto" src="https://img.icons8.com/pastel-glyph/64/open-box.png" alt="<?= $row["nome"] ?>" width="50" height="50"></td>
+                            <?php
+                            } else {
+                            ?>
+                                <td><img class="img-item atr-foto" src="<?= $row["urlfoto"] ?>" alt="<?= $row["nome"] ?>" width="50" height="50"></td>
+                            <?php
+                            }
+                            ?>
                             <td class="atributo-item atr-nome"><?= $row["nome"] ?></td>
                             <td class="atributo-item atr-mercado"><?= $row["nome_mercado"] ?></td>
                             <td class="atributo-item atr-preco">R$<?= $row["preco"] ?>,00</td>
@@ -90,7 +100,7 @@ if (!autenticado()) {
                             </td>
                         </tr>
                     <?php
-                    $valor_final += $row["preco"];
+                        $valor_final += $row["preco"];
                     }
                     ?>
                 </tbody>

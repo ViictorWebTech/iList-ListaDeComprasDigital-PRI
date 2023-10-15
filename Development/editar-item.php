@@ -70,7 +70,19 @@ if (!$rowItem) {
                     <hr class="hr-mb">
 
 
-                    <img class="img-item" width="50" height="50" src="<?= $rowItem['urlfoto']; ?>" alt="<?= $rowItem['nome']; ?>" id="image-preview" />
+                    <?php
+                    if (!$rowItem["urlfoto"]) {
+                    ?>
+                        <td><img class="img-item atr-foto" src="https://img.icons8.com/pastel-glyph/64/open-box.png" alt="<?= $rowItem["nome"] ?>" width="50" height="50"></td>
+                    <?php
+                    } else {
+                    ?>
+                        <img class="img-item" width="50" height="50" src="<?= $rowItem['urlfoto']; ?>" alt="<?= $rowItem['nome']; ?>" id="image-preview" />
+                    <?php
+                    }
+                    ?>
+
+
 
 
                     <input type="hidden" name="id_item" id="id_item" value="<?= $id_item; ?>" required>
@@ -80,9 +92,7 @@ if (!$rowItem) {
                     </div>
                     <div class="textfield">
                         <label for="urlfoto">Você pode adicionar a URL de uma Foto ou Imagem do produto</label>
-
                         <input type="url" id="urlfoto" name="urlfoto" placeholder="URL da imagem" value="<?= $rowItem['urlfoto']; ?>" onchange="imagePreview(this.value)">
-
                     </div>
                     <div class="textfield">
                         <label for="nome_mercado">Nome do Mercado</label>

@@ -20,6 +20,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import br.com.ilist.dto.UsuarioDTO;
 import br.com.ilist.ctr.UsuarioCTR;
+
 public class CadastrarVIEW extends javax.swing.JInternalFrame {
     
     UsuarioDTO usuarioDTO = new UsuarioDTO();
@@ -58,7 +59,7 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         email = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setClosable(true);
@@ -70,6 +71,7 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
 
         jLabel2.setText("Crie uma senha:");
 
+        Novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/novo.png"))); // NOI18N
         Novo.setText("Adicionar");
         Novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,6 +79,7 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/cancelar.png"))); // NOI18N
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,12 +94,14 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Insira seu email:");
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/excluir.png"))); // NOI18N
         jButton3.setText("Limpar");
 
-        jButton4.setText("Criar Conta");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/salvar.png"))); // NOI18N
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnSalvarActionPerformed(evt);
             }
         });
 
@@ -108,31 +113,27 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel2)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel5))
-                            .addComponent(Novo, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addComponent(Novo)
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jButton2))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(nome_usuario)
-                                .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
-                                .addComponent(email))))
+                        .addComponent(jButton2)
+                        .addGap(20, 20, 20)
+                        .addComponent(btnSalvar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(nome_usuario)
+                            .addComponent(senha, javax.swing.GroupLayout.DEFAULT_SIZE, 142, Short.MAX_VALUE)
+                            .addComponent(email)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(60, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
-                .addGap(29, 29, 29)
-                .addComponent(jButton3)
-                .addGap(52, 52, 52))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,15 +152,13 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Novo)
+                    .addComponent(btnSalvar)
+                    .addComponent(jButton3)
                     .addComponent(jButton2))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton3))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -169,14 +168,13 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/organizacao.png"))); // NOI18N
@@ -190,7 +188,7 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 512, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -198,25 +196,36 @@ public class CadastrarVIEW extends javax.swing.JInternalFrame {
                 .addGap(55, 55, 55)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        if(gravar_alterar==1){
+            gravar();
+            gravar_alterar=0;
+        }else{
+            if(gravar_alterar==2){
+                alterar();
+                gravar_alterar=0;
+            }else{
+                JOptionPane.showMessageDialog(null, "Erro no Sistema!!!");
+            }
+        }
+
         // TODO add your handling code here:
-        gravar_alterar = 1;
-    }//GEN-LAST:event_NovoActionPerformed
+    }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    private void NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoActionPerformed
+        gravar_alterar = 1;
+    }//GEN-LAST:event_NovoActionPerformed
 
 private void gravar(){
 
@@ -257,10 +266,10 @@ private void alterar(){
 }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Novo;
+    private javax.swing.JButton btnSalvar;
     private javax.swing.JTextField email;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
