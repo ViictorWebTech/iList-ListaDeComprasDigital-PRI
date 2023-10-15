@@ -77,10 +77,10 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         menuBar.add(menuLogin);
 
         fileMenu.setMnemonic('f');
-        fileMenu.setText("Cadastrar");
+        fileMenu.setText("Item");
 
         itemMenuItem.setMnemonic('o');
-        itemMenuItem.setText("Item");
+        itemMenuItem.setText("Cadastrar");
         itemMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itemMenuItemActionPerformed(evt);
