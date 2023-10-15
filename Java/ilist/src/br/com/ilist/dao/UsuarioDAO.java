@@ -38,7 +38,7 @@ public boolean inserirUsuario(UsuarioDTO usuarioDTO){
                 + usuarioDTO.getEmail() + "', '"
                 + usuarioDTO.getSenha() + "');";
         
-        stmt.execute(comando.toUpperCase());
+        stmt.execute(comando);
         
         ConexaoDAO.con.commit();
         
@@ -66,7 +66,7 @@ public boolean editarUsuario(UsuarioDTO usuarioDTO){
                 + "email = '" + usuarioDTO.getEmail() 
                 + "' WHERE id_usuario = '" + usuarioDTO.getId_usuario() + "';";
         
-        stmt.execute(comando.toUpperCase());
+        stmt.execute(comando);
         
         ConexaoDAO.con.commit();
         

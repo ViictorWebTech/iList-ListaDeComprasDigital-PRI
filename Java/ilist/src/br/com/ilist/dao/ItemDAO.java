@@ -27,6 +27,7 @@ private Statement stmt = null;
 
 
 public boolean inserirItem(ItemDTO itemDTO){
+    String comando = "";
     try{
         ConexaoDAO.ConectDB();
         
@@ -39,13 +40,15 @@ public boolean inserirItem(ItemDTO itemDTO){
 //                + itemDTO.getNome_mercado() + "', '"
 //                + itemDTO.getPreco() + "');";
 
-String comando = "Insert into item(nome, "
-                + "nome_mercado, preco) values (" 
+ comando = "Insert into itens(nome, "
+                + "preco, nome_mercado, id_usuario) values (" 
                 + "'" + itemDTO.getNome() + "', '"
-                + itemDTO.getNome_mercado() + "', '"
-                + itemDTO.getPreco() + "');";
+                + itemDTO.getPreco() + "', '"
+                + itemDTO.getNome_mercado() + "', "
+                + "1);";
         
-        stmt.execute(comando.toUpperCase());
+ System.out.println(comando);
+        stmt.execute(comando);
         
         ConexaoDAO.con.commit();
         
@@ -53,7 +56,7 @@ String comando = "Insert into item(nome, "
         return true;
     }//Fecha try
     catch (Exception e) {
-        System.out.println(e.getMessage());
+        System.out.println("Erro ItemDAO" + e.getMessage());
         return false;
     }//Fecha catch
     finally{
@@ -62,18 +65,20 @@ String comando = "Insert into item(nome, "
 } //Fecha método inserirItem
 
 public boolean editarItem(ItemDTO itemDTO){
+    String comando = "";
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
         
-        String comando = "UPDATE Itens "
+        
+         comando = "UPDATE Itens "
                 + "SET nome = '" + itemDTO.getNome() + "',"
                 + "preco = '" + itemDTO.getPreco() + "',"
-                + "nome_mercado = '" + itemDTO.getNome_mercado() 
+                + "nome_mercado = '" + itemDTO.getNome_mercado()  
                 + "' WHERE id_item = '" + itemDTO.getId_item() + "';";
         
-        stmt.execute(comando.toUpperCase());
+        stmt.execute(comando);
         
         ConexaoDAO.con.commit();
         
@@ -130,7 +135,7 @@ switch(opcao){
 //                + "' WHERE u.id_usuario = '" + usuarioDTO.getId_usuario() + "' "
 //                + "ORDER BY '" + itemDTO.getNome() + "';";
         
-         comando = "SELECT * FROM item" 
+         comando = "SELECT nome, nome_mercado, preco FROM itens" 
                 + " WHERE nome like '" + itemDTO.getNome() + "%'" 
                 + " ORDER BY nome;";
          break;
@@ -141,27 +146,21 @@ switch(opcao){
 //                + "ORDER BY '" + itemDTO.getNome() + "';";
 //         break;
     case 2:
-        comando = "SELECT * from item" +
+        comando = "SELECT nome, nome_mercado, preco from itens" +
                 "WHERE id_item like '" + itemDTO.getId_item() + "%'" +
                 "ORDER BY id_item";
         
         break;
 }
 
-
-        
-        ConexaoDAO.con.commit();
-        
-        stmt.close();
+System.out.println(comando);
+rs = stmt.executeQuery(comando);
         return rs;
     }//Fecha Try
    catch (Exception e) {
         System.out.println(e.getMessage());
         return rs;
     }//Fecha catch
-    finally{
-        ConexaoDAO.CloseDB();
-    }//Fecha finally
 } //Fecha método selecionarItem
 
 

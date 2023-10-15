@@ -17,8 +17,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import br.com.ilist.dto.ItemDTO;
 import br.com.ilist.ctr.ItemCTR;
-import br.com.ilist.ctr.UsuarioCTR;
-import br.com.ilist.dto.UsuarioDTO;
+//import br.com.ilist.ctr.UsuarioCTR;
+//import br.com.ilist.dto.UsuarioDTO;
 
 public class ItemVIEW extends javax.swing.JInternalFrame {
 
@@ -213,7 +213,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
         );
 
         Novo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/novo.png"))); // NOI18N
-        Novo.setText("Adicionar");
+        Novo.setText("Novo");
         Novo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NovoActionPerformed(evt);
@@ -245,13 +245,13 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(Novo)
-                .addGap(18, 18, 18)
-                .addComponent(btnRemover)
-                .addGap(18, 18, 18)
-                .addComponent(btnExcluir)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnSalvar)
-                .addContainerGap(360, Short.MAX_VALUE))
+                .addGap(12, 12, 12)
+                .addComponent(btnExcluir)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnRemover)
+                .addContainerGap(581, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,6 +319,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
         if (gravar_alterar == 1) {
             gravar();
             gravar_alterar = 0;
+                limpaCampos();
         } else {
             if (gravar_alterar == 2) {
                 alterar();
@@ -333,7 +334,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
-        preencheTabela(pesquisa_nome.getText().toUpperCase());
+        preencheTabela(pesquisa_nome.getText());
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPesquisarActionPerformed
 
