@@ -33,10 +33,7 @@ if (!autenticado()) {
             </div>
             <div class="textfield">
                 <label for="urlfoto">Você pode adicionar a URL de uma Foto ou Imagem do produto</label>
-
                 <input type="url" id="urlfoto" name="urlfoto" placeholder="URL da imagem" onchange="imagePreview(this.value)">
-
-              
             </div>
             <div class="textfield">
                 <label for="nome_mercado">Nome do Mercado</label>

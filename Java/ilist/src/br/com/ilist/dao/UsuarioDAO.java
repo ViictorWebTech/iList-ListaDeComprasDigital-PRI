@@ -33,10 +33,10 @@ public boolean inserirUsuario(UsuarioDTO usuarioDTO){
         stmt = ConexaoDAO.con.createStatement();
         
         String comando = "Insert into usuarios(nome_usuario, "
-                + "email, senha) values ( " 
-                + "'" + usuarioDTO.getNome_usuario() + "', " 
-                + usuarioDTO.getEmail() + "', "
-                + usuarioDTO.getSenha() + "', ) ";
+                + "email, senha) values ('" 
+                + usuarioDTO.getNome_usuario() + "', '" 
+                + usuarioDTO.getEmail() + "', '"
+                + usuarioDTO.getSenha() + "');";
         
         stmt.execute(comando.toUpperCase());
         

@@ -33,7 +33,7 @@ public class ConexaoDAO {
             
             con.setAutoCommit(false);
             if (con == null) {
-                System.out.println("Erro ao abrir o banco de dadps Postgres");
+                System.out.println("Erro ao abrir o banco de dados Postgres");
             }
             /////////////////////////////////
             

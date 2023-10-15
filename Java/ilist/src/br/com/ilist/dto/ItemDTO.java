@@ -10,9 +10,8 @@ package br.com.ilist.dto;
  * @author Aluno
  */
 public class ItemDTO {
-    private String nome, nome_mercado;
+    private String nome, nome_mercado, preco;
     private int id_item, id_usuario;
-    private double preco;
 
     /**
      * Método construtor padrão
@@ -52,14 +51,16 @@ public class ItemDTO {
         this.id_usuario = id_usuario;
     }
 
-    public double getPreco() {
+    public String getPreco() {
         return preco;
     }
 
-    public void setPreco(double preco) {
+    public void setPreco(String preco) {
         this.preco = preco;
     }
 
+   
+ 
  
     
 }

@@ -32,12 +32,18 @@ public boolean inserirItem(ItemDTO itemDTO){
         
         stmt = ConexaoDAO.con.createStatement();
         
-        String comando = "Insert into itens (nome, "
-                + "preco, nome_mercado) values ( " 
-                + "'" + itemDTO.getNome() + "', " 
-                + itemDTO.getPreco() + "', "
-                + itemDTO.getNome_mercado() + "', "
-                + itemDTO.getId_usuario() + "', ) ";
+//        String comando = "Insert into itens(id_usuario, nome, "
+//                + "nome_mercado, preco) values (" 
+//                + "'" + itemDTO.getId_usuario() + "', '" 
+//                + itemDTO.getNome() + "', '"
+//                + itemDTO.getNome_mercado() + "', '"
+//                + itemDTO.getPreco() + "');";
+
+String comando = "Insert into item(nome, "
+                + "nome_mercado, preco) values (" 
+                + "'" + itemDTO.getNome() + "', '"
+                + itemDTO.getNome_mercado() + "', '"
+                + itemDTO.getPreco() + "');";
         
         stmt.execute(comando.toUpperCase());
         
@@ -90,7 +96,7 @@ public boolean removerItem(ItemDTO itemDTO){
         stmt = ConexaoDAO.con.createStatement();
         
         String comando = "DELETE FROM itens"
-                + "' WHERE id_item = '" + itemDTO.getId_item()
+                + " WHERE id_item = '" + itemDTO.getId_item()
                 + "';";
         
         ConexaoDAO.con.commit();
@@ -107,29 +113,56 @@ public boolean removerItem(ItemDTO itemDTO){
     }//Fecha finally
 } //Fecha método removerItem
 
-public boolean selecionarItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO){
+//public ResultSet selecionarItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO, int opcao){
+public ResultSet selecionarItem(ItemDTO itemDTO, int opcao){
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
+ 
+
+String comando = "";
+switch(opcao){
+    case 1:
+               
+//        String comando = "SELECT * FROM itens i INNER JOIN usuarios u" 
+//                + "ON u.id_usuario = i.id_usuario"
+//                + "' WHERE u.id_usuario = '" + usuarioDTO.getId_usuario() + "' "
+//                + "ORDER BY '" + itemDTO.getNome() + "';";
         
-        String comando = "SELECT * FROM itens i INNER JOIN usuarios u" 
-                + "ON u.id_usuario = i.id_usuario"
-                + "' WHERE u.id_usuario = '" + usuarioDTO.getId_usuario() + "' "
-                + "ORDER BY '" + itemDTO.getNome() + "';";
+         comando = "SELECT * FROM item" 
+                + " WHERE nome like '" + itemDTO.getNome() + "%'" 
+                + " ORDER BY nome;";
+         break;
+//    case 2: 
+//         comando = "SELECT * FROM itens i INNER JOIN usuarios u" 
+//                + "ON u.id_usuario = i.id_usuario"
+//                + "' WHERE u.id_usuario = '" + usuarioDTO.getId_usuario() + "' "
+//                + "ORDER BY '" + itemDTO.getNome() + "';";
+//         break;
+    case 2:
+        comando = "SELECT * from item" +
+                "WHERE id_item like '" + itemDTO.getId_item() + "%'" +
+                "ORDER BY id_item";
+        
+        break;
+}
+
+
         
         ConexaoDAO.con.commit();
         
         stmt.close();
-        return true;
+        return rs;
     }//Fecha Try
    catch (Exception e) {
         System.out.println(e.getMessage());
-        return false;
+        return rs;
     }//Fecha catch
     finally{
         ConexaoDAO.CloseDB();
     }//Fecha finally
-} //Fecha método removerItem
+} //Fecha método selecionarItem
+
 
 }//Fecha classe ItemDAO

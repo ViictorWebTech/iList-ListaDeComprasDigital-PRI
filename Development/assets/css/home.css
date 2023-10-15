@@ -92,7 +92,9 @@ tr {
 
 .img-item {
   border-radius: 50px;
+  /*
   box-shadow: 0 10px 40px #000000ab;
+  */
 }
 
 .atributo-item {
@@ -120,6 +122,7 @@ p.text-cadastro {
   width: 50%;
   margin-right: 1.5em;
 }
+
 
 @media only screen and (max-width: 900px) {
   .main-itens {

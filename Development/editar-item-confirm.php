@@ -45,7 +45,19 @@ $count = $stmt->rowCount();
             //Deu certo
         ?>
             <h1>Seu item foi alterado com sucesso!</h1>
-            <img class="img-item" width="50" height="50" src="<?= $urlfoto; ?>" alt="<?= $nome; ?>" />
+
+            <?php
+            if (!$urlfoto) {
+            ?>
+                <td><img class="img-item atr-foto" src="https://img.icons8.com/pastel-glyph/64/open-box.png" alt="<?= $nome; ?>" width="50" height="50"></td>
+            <?php
+            } else {
+            ?>
+                <img class="img-item" width="50" height="50" src="<?= $urlfoto; ?>" alt="<?= $nome; ?>" />
+            <?php
+            }
+            ?>
+
             <h4>ID: <span class="atributo-item"><?= $id_item; ?></span></h4>
             <h4>Nome: <span class="atributo-item"><?= $nome; ?></span></h4>
             <h4>URL Foto: <span class="atributo-item"><?= $urlfoto; ?></span></h4>
