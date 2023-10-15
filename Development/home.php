@@ -14,6 +14,7 @@ require 'header-system.php';
 require 'conexao.php';
 
 $id_usuario = id_usuario();
+
 $valor_final = 0;
 
 $sql = "SELECT i.id_item, i.nome, i.urlfoto, i.nome_mercado, i.preco FROM itens i INNER JOIN usuarios u ON u.id_usuario = i.id_usuario WHERE u.id_usuario = ? ORDER BY id_item";
