@@ -17,8 +17,6 @@ import java.sql.*;
 
 public class UsuarioDAO {
     
-    
-    //Método construtor da classe
 public UsuarioDAO(){
 }    
 
@@ -27,18 +25,19 @@ private Statement stmt = null;
 
 
 public boolean inserirUsuario(UsuarioDTO usuarioDTO){
+    String comando = "";
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
         
-        String comando = "Insert into usuarios(nome_usuario, "
+        comando = "Insert into usuarios(nome_usuario, "
                 + "email, senha) values ('" 
                 + usuarioDTO.getNome_usuario() + "', '" 
                 + usuarioDTO.getEmail() + "', '"
-                + usuarioDTO.getSenha() + "');";
-        
-        stmt.execute(comando);
+                + "md5('" + usuarioDTO.getSenha() + "'));";
+           System.out.println(comando);
+            stmt.execute(comando);
         
         ConexaoDAO.con.commit();
         
@@ -46,13 +45,41 @@ public boolean inserirUsuario(UsuarioDTO usuarioDTO){
         return true;
     }//Fecha try
     catch (Exception e) {
-        System.out.println(e.getMessage());
+        System.out.println("Erro no UsuarioDAO:" + e.getMessage());
         return false;
     }//Fecha catch
     finally{
         ConexaoDAO.CloseDB();
     }//Fecha finally
-} //Fecha método inserirItem
+} //Fecha método inserirIUsuario
+
+
+public int logarUsuario(UsuarioDTO usuarioDTO){
+    String comando = " ";
+    try{
+        ConexaoDAO.ConectDB();
+        stmt = ConexaoDAO.con.createStatement();
+        comando = "SELECT u.id_usuario FROM usuarios u"
+                + " WHERE u.email = '" + usuarioDTO.getEmail() + "' "
+                + "and u.senha = md5('" + usuarioDTO.getSenha() + "')";
+        
+        rs = null;
+        rs = stmt.executeQuery(comando);
+        if(rs.next()){
+            return rs.getInt("id_usuario");
+        }
+        else{
+            return 0;
+        }
+    }
+    catch (Exception e) {
+        System.out.println(e.getMessage());
+        return 0;
+    }
+    finally{
+        ConexaoDAO.CloseDB();
+    }
+}//Fecha metodo logarUsuario
 
 public boolean editarUsuario(UsuarioDTO usuarioDTO){
     try{
@@ -62,7 +89,7 @@ public boolean editarUsuario(UsuarioDTO usuarioDTO){
         
         String comando = "UPDATE usuarios "
                 + "SET nome_usuario = '" + usuarioDTO.getNome_usuario() + "', "
-                + "senha = '" + usuarioDTO.getSenha() + "',"
+                + "senha = md5('" + usuarioDTO.getSenha() + "'),"
                 + "email = '" + usuarioDTO.getEmail() 
                 + "' WHERE id_usuario = '" + usuarioDTO.getId_usuario() + "';";
         

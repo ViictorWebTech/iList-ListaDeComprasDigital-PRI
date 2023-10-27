@@ -34,11 +34,23 @@ if (empty($id_item)) {
     exit;
 }
 
+if(id_usuario() != $id_usuario){
+    $_SESSION["result"] = false;
+    $_SESSION["erro"] = "Operação não permitida";
+    redireciona("home.php");
+    die();
+}
 
 $sql = "DELETE FROM itens WHERE id_item = ? AND id_usuario = ?";
 
-$stmt = $conn->prepare($sql);
-$result = $stmt->execute([$id_item, $id_usuario]);
+try {
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute([$id_item, $id_usuario]);
+} catch (Exception $e) {
+    $result = false;
+    $error = $e->getMessage();
+}
+
 
 $count = $stmt->rowCount();
 

@@ -123,7 +123,23 @@ if (!autenticado()) {
 
 <?php
 
+if(isset($_SESSION["result"])){
+    if(!$_SESSION["result"]){
+        $erro = $_SESSION["erro"];
+        unset($_SESSION["erro"]);
+        ?>
+ <div class="item-confirm centralizar-texto">
+        <h1>Confirmação de Exclusão</h1>
+        <hr class="hr-mb">
+        <h1>Falha ao efetuar exclusão.</h1>
+    <h4><?= $erro ?></h4>
+    </div>
 
+
+<?php
+    }
+    unset($_SESSION["result"]);
+}
 
 require 'footer-system.php';
 ?>

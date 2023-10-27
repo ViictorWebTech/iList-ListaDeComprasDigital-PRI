@@ -32,7 +32,7 @@
                 } else {
                 if(!urlfoto_usuario()){
                     ?>
-                    <img class="avatar-circle" src="https://img.icons8.com/ios-filled/50/user-male-circle.png" alt="Avatar de perfil de <?= nome_usuario(); ?>" width="40" height="40"/>
+                    <img class="avatar-circle" src="assets/img/icons/perfil-de-usuario.png" alt="Avatar de perfil de <?= nome_usuario(); ?>" width="40" height="40"/>
                     <?php
                 } else{
                 ?>

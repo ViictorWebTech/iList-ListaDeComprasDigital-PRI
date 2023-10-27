@@ -9,6 +9,8 @@ package br.com.ilist.dto;
  *
  * @author Aluno
  */
+
+
 public class ItemDTO {
     private String nome, nome_mercado, preco;
     private int id_item, id_usuario;
@@ -35,6 +37,14 @@ public class ItemDTO {
         this.nome_mercado = nome_mercado;
     }
 
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+
     public int getId_item() {
         return id_item;
     }
@@ -43,13 +53,6 @@ public class ItemDTO {
         this.id_item = id_item;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
-    }
-
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
-    }
 
     public String getPreco() {
         return preco;

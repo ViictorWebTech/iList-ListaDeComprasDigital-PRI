@@ -26,7 +26,7 @@ private ResultSet rs = null;
 private Statement stmt = null;
 
 
-public boolean inserirItem(ItemDTO itemDTO){
+public boolean inserirItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO){
     String comando = "";
     try{
         ConexaoDAO.ConectDB();
@@ -45,7 +45,7 @@ public boolean inserirItem(ItemDTO itemDTO){
                 + "'" + itemDTO.getNome() + "', '"
                 + itemDTO.getPreco() + "', '"
                 + itemDTO.getNome_mercado() + "', "
-                + "1);";
+                + itemDTO.getId_usuario() + ");";
         
  System.out.println(comando);
         stmt.execute(comando);
@@ -56,7 +56,7 @@ public boolean inserirItem(ItemDTO itemDTO){
         return true;
     }//Fecha try
     catch (Exception e) {
-        System.out.println("Erro ItemDAO" + e.getMessage());
+        System.out.println("Erro ItemDAO " + e.getMessage());
         return false;
     }//Fecha catch
     finally{
@@ -64,7 +64,7 @@ public boolean inserirItem(ItemDTO itemDTO){
     }//Fecha finally
 } //Fecha método inserirItem
 
-public boolean editarItem(ItemDTO itemDTO){
+public boolean editarItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO){
     String comando = "";
     try{
         ConexaoDAO.ConectDB();
@@ -76,7 +76,8 @@ public boolean editarItem(ItemDTO itemDTO){
                 + "SET nome = '" + itemDTO.getNome() + "',"
                 + "preco = '" + itemDTO.getPreco() + "',"
                 + "nome_mercado = '" + itemDTO.getNome_mercado()  
-                + "' WHERE id_item = '" + itemDTO.getId_item() + "';";
+                + "' WHERE id_item = " + itemDTO.getId_item() + " AND "
+                + "id_usuario = " + usuarioDTO.getId_usuario() + ";";
         
         stmt.execute(comando);
         
@@ -94,15 +95,17 @@ public boolean editarItem(ItemDTO itemDTO){
     }//Fecha finally
 } //Fecha método editarItem
 
-public boolean removerItem(ItemDTO itemDTO){
+public boolean removerItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO){
     try{
         ConexaoDAO.ConectDB();
         
         stmt = ConexaoDAO.con.createStatement();
         
         String comando = "DELETE FROM itens"
-                + " WHERE id_item = '" + itemDTO.getId_item()
-                + "';";
+                + " WHERE id_item = " + itemDTO.getId_item()
+                + " AND id_usuario = " + usuarioDTO.getId_usuario() +";";
+        
+        stmt.execute(comando);
         
         ConexaoDAO.con.commit();
         
@@ -119,7 +122,7 @@ public boolean removerItem(ItemDTO itemDTO){
 } //Fecha método removerItem
 
 //public ResultSet selecionarItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO, int opcao){
-public ResultSet selecionarItem(ItemDTO itemDTO, int opcao){
+public ResultSet selecionarItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO, int opcao){
     try{
         ConexaoDAO.ConectDB();
         
@@ -135,9 +138,9 @@ switch(opcao){
 //                + "' WHERE u.id_usuario = '" + usuarioDTO.getId_usuario() + "' "
 //                + "ORDER BY '" + itemDTO.getNome() + "';";
         
-         comando = "SELECT nome, nome_mercado, preco FROM itens" 
-                + " WHERE nome like '" + itemDTO.getNome() + "%'" 
-                + " ORDER BY nome;";
+         comando = "SELECT nome, nome_mercado, preco FROM itens i, usuarios u" 
+                + " WHERE i.nome like '" + itemDTO.getNome() + "%'" 
+                + "AND i.id_usuario = " + usuarioDTO.getId_usuario() + " ORDER BY nome;";
          break;
 //    case 2: 
 //         comando = "SELECT * FROM itens i INNER JOIN usuarios u" 
@@ -147,8 +150,8 @@ switch(opcao){
 //         break;
     case 2:
         comando = "SELECT nome, nome_mercado, preco from itens" +
-                "WHERE id_item like '" + itemDTO.getId_item() + "%'" +
-                "ORDER BY id_item";
+                "WHERE id_item like " + itemDTO.getId_item() + "%"
+                + "AND id_usuario = " + usuarioDTO.getId_usuario() + " ORDER BY id_item;";
         
         break;
 }

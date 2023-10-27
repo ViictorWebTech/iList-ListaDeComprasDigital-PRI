@@ -10,7 +10,7 @@ package br.com.ilist.ctr;
  * @author Aluno
  */
 
-import java.sql.ResultSet;
+import java.sql.*;
 import br.com.ilist.dto.UsuarioDTO;
 import br.com.ilist.dao.UsuarioDAO;
 import br.com.ilist.dao.ConexaoDAO;
@@ -20,12 +20,13 @@ public class UsuarioCTR {
     
     public UsuarioCTR(){
         }
+    
         public String inserirUsuario(UsuarioDTO usuarioDTO){
             try{
                 if(usuarioDAO.inserirUsuario(usuarioDTO)){
                     return "Usuário cadastrado com sucesso!!";
                 }else{
-                    return "Usuário NÃO cadastrado";
+                    return "Usuário NÃO cadastrado!!!";
                 }
             }catch (Exception e){
                         System.out.println(e.getMessage());
@@ -33,6 +34,10 @@ public class UsuarioCTR {
                         }
             
         }//Fecha método inserirUsuario
+        
+        public int logarUsuario(UsuarioDTO usuarioDTO){
+            return usuarioDAO.logarUsuario(usuarioDTO);
+        }//Fecha método logarUsuario
         
             public String editarUsuario(UsuarioDTO usuarioDTO){
             try{
