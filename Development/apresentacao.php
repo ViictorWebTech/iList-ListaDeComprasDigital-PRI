@@ -151,8 +151,7 @@ require('header-apresentacao.php');
                 <li>
                     <h2>O que devo fazer se esquecer minha senha?</h2>
                 </li>
-                <p>Sentar e chorar!😢</p>
-                <p>Brincadeira! Entre em contato imediatamente pelo <a href="mailto:vwebtech777@gmail.com">email</a> descrevendo o ocorrido e aguarde respostas de como prosseguir com novo acesso.</p>
+                <p>Entre em contato imediatamente pelo <a href="mailto:vwebtech777@gmail.com">email</a> descrevendo o ocorrido e aguarde respostas de como prosseguir com novo acesso.</p>
             </section>
             <hr>
             <section class="topicos">

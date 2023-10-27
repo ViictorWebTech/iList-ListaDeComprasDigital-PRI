@@ -9,13 +9,16 @@ package br.com.ilist.view;
 import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
-public class PrincipalVIEW extends javax.swing.JFrame {
+import javax.swing.JOptionPane;
+
+public class TelaInicialVIEW extends javax.swing.JFrame {
 
     /**
      * Creates new form PrincipalVIEW
      */
-    public PrincipalVIEW() {
+    public TelaInicialVIEW() {
         initComponents();
+        this.setResizable(false);
     }
 
     /**
@@ -36,7 +39,6 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         };
         menuBar = new javax.swing.JMenuBar();
         menuLogin = new javax.swing.JMenu();
-        itemMenuEntrar = new javax.swing.JMenuItem();
         itemMenuCadastrar = new javax.swing.JMenuItem();
         fileMenu = new javax.swing.JMenu();
         itemMenuItem = new javax.swing.JMenuItem();
@@ -45,25 +47,15 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPane.setBackground(new java.awt.Color(204, 204, 255));
-        desktopPane.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 255, 51), new java.awt.Color(204, 255, 204), new java.awt.Color(204, 255, 204), new java.awt.Color(204, 255, 204)));
         desktopPane.setForeground(new java.awt.Color(204, 204, 255));
 
         menuLogin.setMnemonic('h');
-        menuLogin.setText("Login");
+        menuLogin.setText("Cadastros");
         menuLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menuLoginMouseClicked(evt);
             }
         });
-
-        itemMenuEntrar.setMnemonic('o');
-        itemMenuEntrar.setText("Entrar");
-        itemMenuEntrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itemMenuEntrarActionPerformed(evt);
-            }
-        });
-        menuLogin.add(itemMenuEntrar);
 
         itemMenuCadastrar.setMnemonic('o');
         itemMenuCadastrar.setText("Cadastrar");
@@ -122,72 +114,75 @@ public class PrincipalVIEW extends javax.swing.JFrame {
         ItemVIEW itemVIEW = new ItemVIEW();
         this.desktopPane.add(itemVIEW);
         itemVIEW.setVisible(true);
+        itemVIEW.setPosicao();
 
     }//GEN-LAST:event_itemMenuItemActionPerformed
 
     private void menuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseClicked
         // TODO add your handling code here:
-        System.exit(0);
+        sair();
     }//GEN-LAST:event_menuSairMouseClicked
 
+    
+    
+    private void sair(){
+        Object[] options = { "Sair", "Cancelar" };
+        if(JOptionPane.showOptionDialog(null, "Deseja Sair do Sistema", "Informação", 
+                JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, options, options[0]) == 0){
+            System.exit(0);
+        } 
+    } 
     private void menuLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuLoginMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_menuLoginMouseClicked
-
-    private void itemMenuEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuEntrarActionPerformed
-        // TODO add your handling code here:
-        EntrarVIEW entrarVIEW = new EntrarVIEW();
-        this.desktopPane.add(entrarVIEW);
-        entrarVIEW.setVisible(true);
-    }//GEN-LAST:event_itemMenuEntrarActionPerformed
 
     private void itemMenuCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuCadastrarActionPerformed
         // TODO add your handling code here:
          CadastrarVIEW cadastrarVIEW = new CadastrarVIEW();
         this.desktopPane.add(cadastrarVIEW);
         cadastrarVIEW.setVisible(true);
+        cadastrarVIEW.setPosicao();
     }//GEN-LAST:event_itemMenuCadastrarActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PrincipalVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PrincipalVIEW().setVisible(true);
-            }
-        });
-    }
+//    /**
+//     * @param args the command line arguments
+//     */
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(TelaInicialVIEW.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new TelaInicialVIEW().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenuItem itemMenuCadastrar;
-    private javax.swing.JMenuItem itemMenuEntrar;
     private javax.swing.JMenuItem itemMenuItem;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuLogin;
