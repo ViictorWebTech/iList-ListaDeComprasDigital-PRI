@@ -68,23 +68,9 @@ require('header-apresentacao.php');
             </section>
             <section class="topicos">
                 <li>
-                    <h2>Lembretes Inteligentes e Amigáveis:</h2>
-                </li>
-                <p>Não se preocupe em esquecer suas listas. Nosso aplicativo oferece lembretes úteis a cada 10 minutos para verificar sua lista de compras. Nunca mais deixe um item importante de fora!</p>
-                <hr>
-            </section>
-            <section class="topicos">
-                <li>
-                    <h2>Ajustes Automáticos para sua Rotina:</h2>
-                </li>
-                <p>Nosso aplicativo se adapta ao seu ritmo. Com lembretes regulares, você pode ajustar suas listas de compras sem esforço, tornando o processo parte da sua rotina diária.</p>
-                <hr>
-            </section>
-            <section class="topicos">
-                <li>
                     <h2>Acesso Simplificado a qualquer Hora:</h2>
                 </li>
-                <p>Acesse suas listas de compras a qualquer momento e em qualquer lugar. Com a sua conta pessoal, todas as suas informações estarão prontas para você, seja em casa ou em movimento. <i><b>(Necessário o consumo de <span title="Internet">dados móveis</span>.)</b></i></p>
+                <p>Acesse suas listas de compras a qualquer momento e em qualquer lugar. Com a sua conta pessoal, todas as suas informações estarão prontas para você, seja em casa ou em movimento. <i><b>(Necessário o consumo de <span title="Internet">dados móveis</span>).</b></i></p>
                 <hr>
             </section>
             <section class="topicos">
@@ -131,13 +117,6 @@ require('header-apresentacao.php');
                 </li>
                 <p>Claro! Você pode adicionar, editar e remover seus itens quando e de onde quiser. Você pode também adicionar sua foto de perfil no processo de criação da conta para deixar no topo de seu aplicativo (ao lado da logomarca).</p>
                 <img class="ftperfil" src="assets/img/icons/faq/fotoperfil.png" alt="Onde ficará sua foto de perfil">
-            </section>
-            <hr>
-            <section class="topicos">
-                <li>
-                    <h2>Como configurar os lembretes de verificação da lista?</h2>
-                </li>
-                <p>Você poderá informar ao aplicativo quando estiver no mercado, assim, a cada 10 minutos o app te enviará uma notificação para te lembrar de verificar a lista.</p>
             </section>
             <hr>
             <section class="topicos">

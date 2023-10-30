@@ -80,7 +80,6 @@ $count = $stmt->rowCount();
     </div>
 
 <?php
-
         }
 ?>
 
