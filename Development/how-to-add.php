@@ -34,7 +34,7 @@ require 'header-how.php';
                 <p>Tenha sua conta criada e com acesso funcionando corretamente.</p>
             </li>
             <li>
-                <p>Abra o Chrome e acesse o site <a href="home.php" target="_blank">iList</a>.</p>
+                <p>Abra o Chrome e acesse o site <a href="home.php" target="_self">iList</a>.</p>
             </li>
             <li>
                 <p>No canto superior direito, clique no ícone de três pontos verticais.</p>
@@ -51,7 +51,7 @@ require 'header-how.php';
             <li>
                 <p>Tenha sua conta criada e com acesso funcionando corretamente.</p>
             <li>
-                <p>Abra o Safari e acesse o site <a href="home.php" target="_blank">iList</a>.</p>
+                <p>Abra o Safari e acesse o site <a href="home.php" target="_self">iList</a>.</p>
             </li>
             <li>
                 <p>Toque no ícone de compartilhamento, que fica na parte inferior da tela.</p>
