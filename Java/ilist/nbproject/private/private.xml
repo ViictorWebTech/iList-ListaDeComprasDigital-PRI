@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI-main/ListaDeComprasInterativa-PRI-main/Java/ilist/src/br/com/ilist/view/ItemVIEW.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI-main/ListaDeComprasInterativa-PRI-main/Java/ilist/src/br/com/ilist/view/TelaInicialVIEW.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI-main/ListaDeComprasInterativa-PRI-main/Java/ilist/src/br/com/ilist/view/CadastrarVIEW.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI-main/ListaDeComprasInterativa-PRI-main/Java/ilist/src/br/com/ilist/view/LoginVIEW.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI-main/ListaDeComprasInterativa-PRI-main/Java/ilist/src/br/com/ilist/dao/ItemDAO.java</file>
+            <file>file:/D:/Guerreiro-2-Info/ListaDeComprasInterativa-PRI-main/ListaDeComprasInterativa-PRI-main/Java/ilist/src/br/com/ilist/ctr/ItemCTR.java</file>
+        </group>
     </open-files>
 </project-private>
