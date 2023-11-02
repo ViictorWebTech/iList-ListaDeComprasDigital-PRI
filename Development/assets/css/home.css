@@ -8,6 +8,9 @@ body {
   align-items: center;
 }
 
+.listagem{
+  display: none;
+}
 .listagem {
   margin-top: 1.5em;
   padding: 30px 35px;
@@ -137,7 +140,6 @@ p.text-cadastro {
     width: 45px;
     height: 45px;
   }
-
   .listagem {
     margin: 0;
     padding: 0.5em;

@@ -9,100 +9,68 @@ if (!autenticado()) {
 }
 
 
-$links_menu = '<li class="nav-item"><a class="nav-link" href="home.php">Tela Inicial</a></li><li class="nav-item"><a class="nav-link" href="add-item.php">Adicionar Item</a></li>';
-require 'head-system.php';
-require 'header-system.php';
-
 require 'conexao.php';
 $id_item = filter_input(INPUT_GET, "id_item", FILTER_SANITIZE_NUMBER_INT);
 $id_usuario = id_usuario();
 
-if (empty($id_item)) {
-?>
-    <main class="main main-add">
-        <div class="item-confirm centralizar-texto">
-
-            <h1>Falha ao excluir.</h1>
-            <hr class="hr-mb">
-            <h4>ID do produto está vazio.</h4>
-        </div>
-
-    </main>
-
-<?php
-    require 'footer-system.php';
-    exit;
-}
-
-if(id_usuario() != $id_usuario){
+if (id_usuario() != $id_usuario) {
     $_SESSION["result"] = false;
     $_SESSION["erro"] = "Operação não permitida";
     redireciona("home.php");
     die();
 }
 
+
+
+
 $sql = "DELETE FROM itens WHERE id_item = ? AND id_usuario = ?";
 
 try {
     $stmt = $conn->prepare($sql);
     $result = $stmt->execute([$id_item, $id_usuario]);
+    $count = $stmt->rowCount();
 } catch (Exception $e) {
     $result = false;
     $error = $e->getMessage();
 }
 
 
-$count = $stmt->rowCount();
-
-?>
-<main class="main main-add">
 
 
-    <div class="item-confirm centralizar-texto">
-        <h1>Confirmação de Exclusão</h1>
-        <hr class="hr-mb">
+if (empty($id_item)) {
+    $error = "ID do item está vazio.";
+
+    $_SESSION["excluir-vazio"] = false;
+    $_SESSION["erro-vazio"] = $error;
+    redireciona("home.php");
+    die();
+} else {
+
+    $_SESSION["excluir-vazio"] = true;
+}
 
 
-        <?php
-
-        if ($result == true && $count >= 1) {
-            //Deu certo
-        ?>
-            <h1>Seu item foi excluído com sucesso!</h1>
-            <h4>ID Excluído: <?= $id_item; ?></h4>
-    </div>
-<?php
-        } elseif ($count == 0) {
-?>
-
-    <h1>Falha ao efetuar exclusão.</h1>
-    <h4>Não foi encontrado nenhum item com o ID = <?= $id_item ?>.</h4>
-    </div>
-
-<?php
-
-        } else {
-            //Não deu certo, erro
-            $errorArray = $stmt->errorInfo();
-?>
-    <h1>Falha ao efetuar exclusão.</h1>
-    <h4><?= $errorArray[2]; ?></h4>
-    </div>
-
-<?php
-        }
-?>
-
-
-</main>
-
-
-<?php
 
 if ($result == true && $count >= 1) {
     redireciona("home.php");
     die();
-} 
+} elseif ($count == 0) {
+    $_SESSION["result"] = false;
+    $_SESSION["erro"] = "Não foi encontrado nenhum item com o ID = $id_item";
+    redireciona("home.php");
+    die();
+} else {
+    //Não deu certo, erro
+    $_SESSION["result"] = false;
+    $_SESSION["erro"] = $error;
+    redireciona("home.php");
+    die();
+}
+?>
+
+
+
+<?php
 
 require 'footer-system.php'
 

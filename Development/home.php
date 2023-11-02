@@ -18,8 +18,17 @@ $id_usuario = id_usuario();
 $valor_final = 0;
 
 $sql = "SELECT i.id_item, i.nome, i.urlfoto, i.nome_mercado, i.preco FROM itens i INNER JOIN usuarios u ON u.id_usuario = i.id_usuario WHERE u.id_usuario = ? ORDER BY id_item";
-$stmt = $conn->prepare($sql);
-$result = $stmt->execute([$id_usuario]);
+
+try {
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute([$id_usuario]);
+} catch (Exception $e) {
+    $result = false;
+    $error = $e->getMessage();
+    redireciona("logout.php");
+    die();
+}
+
 
 if (!autenticado()) {
 
@@ -27,21 +36,122 @@ if (!autenticado()) {
     redireciona("login.php");
     die();
 }
+
+
 ?>
 
-<style>
-    .listagem {
-        visibility: hidden;
-    }
-</style>
 
 <main class="main main-add main-itens">
+
+
+    <?php
+    if (isset($_SESSION["result"])) {
+
+        if (!$_SESSION["result"]) {
+            $erro = $_SESSION["erro"];
+            unset($_SESSION["erro"]);
+    ?>
+            <div class="listagem">
+
+                <h2 class="destaque">Falha ao efetuar exclusão.</h2>
+                <hr class="hr-mb">
+                <h2><?php echo $erro ?></h2>
+            </div>
+    <?php
+        }
+        unset($_SESSION["result"]);
+    }
+    ?>
+
+
+    <?php
+    if (isset($_SESSION["result-add"])) {
+
+        if (!$_SESSION["result-add"]) {
+            $erro = $_SESSION["erro"];
+            unset($_SESSION["erro"]);
+    ?>
+            <div class="listagem">
+
+                <h2 class="destaque">Falha ao adicionar item.</h2>
+                <hr class="hr-mb">
+                <h2><?php echo $erro ?></h2>
+            </div>
+    <?php
+        }
+        unset($_SESSION["result-add"]);
+    }
+    ?>
+
+
+    <?php
+    if (isset($_SESSION["result-editar"])) {
+
+        if (!$_SESSION["result-editar"]) {
+            $erro = $_SESSION["erro"];
+            unset($_SESSION["erro"]);
+    ?>
+            <div class="listagem">
+
+                <h2 class="destaque">Falha ao abrir formulário de edição.</h2>
+                <hr class="hr-mb">
+                <h2><?php echo $erro ?></h2>
+            </div>
+    <?php
+        }
+        unset($_SESSION["result-editar"]);
+    }
+    ?>
+
+
+    <?php
+    if (isset($_SESSION["editar-vazio"])) {
+
+        if (!$_SESSION["editar-vazio"]) {
+            $errovazio = $_SESSION["erro-vazio"];
+            unset($_SESSION["erro-vazio"]);
+    ?>
+            <div class="listagem">
+
+                <h2 class="destaque">Falha ao abrir formulário de edição.</h2>
+                <hr class="hr-mb">
+                <h2><?php echo $errovazio ?></h2>
+            </div>
+        <?php
+        }
+        unset($_SESSION["editar-vazio"]);
+    }
+
+    if (isset($_SESSION["excluir-vazio"])) {
+
+        if (!$_SESSION["excluir-vazio"]) {
+            $errovazio = $_SESSION["erro-vazio"];
+            unset($_SESSION["erro-vazio"]);
+        ?>
+            <div class="listagem">
+
+                <h2 class="destaque">Falha ao excluir.</h2>
+                <hr class="hr-mb">
+                <h2><?php echo $errovazio ?></h2>
+            </div>
+    <?php
+        }
+        unset($_SESSION["excluir-vazio"]);
+    }
+    ?>
+    <style>
+        .item-confirm {
+            visibility: visible;
+        }
+        .listagem {
+            display: none;
+        }
+    </style>
     <div class="item-confirm centralizar-texto">
         <h1>Não há itens em sua tabela.</h1>
         <hr class="hr-mb">
         <h4>Adicione Itens para mostrar.</h4>
     </div>
-
 
     <div class="listagem">
         <h2>Itens Adicionados</h2>
@@ -63,17 +173,9 @@ if (!autenticado()) {
 
 
                     <?php
+
                     while ($row = $stmt->fetch()) {
                     ?>
-                        <style>
-                            .listagem {
-                                visibility: visible;
-                            }
-
-                            .item-confirm {
-                                display: none;
-                            }
-                        </style>
                         <tr>
                             <?php
                             if (!$row["urlfoto"]) {
@@ -100,6 +202,16 @@ if (!autenticado()) {
                                 </a>
                             </td>
                         </tr>
+
+                        <style>
+                            .listagem {
+                                display: flex;
+                            }
+
+                            .item-confirm {
+                                display: none;
+                            }
+                        </style>
                     <?php
                         $valor_final += $row["preco"];
                     }
@@ -115,33 +227,12 @@ if (!autenticado()) {
         </section>
 
 
-    
+
 
     </div>
 
 
 
-<?php
-
-if (isset($_SESSION["result"])) {
-    if (!$_SESSION["result"]) {
-        $erro = $_SESSION["erro"];
-        unset($_SESSION["erro"]);
-?>
-        <div class="item-confirm centralizar-texto">
-            <h1>Confirmação de Exclusão</h1>
-            <hr class="hr-mb">
-            <h1>Falha ao efetuar exclusão.</h1>
-            <h4><?= $erro ?></h4>
-        </div>
-
-
-<?php
-    }
-    unset($_SESSION["result"]);
-}
-
-?>
 </main>
 <?php
 
