@@ -25,8 +25,15 @@ $preco = filter_input(INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_FLOAT);
 $sql = "INSERT INTO itens(id_usuario, nome, urlfoto, nome_mercado, preco) 
         VALUES (?, ?, ?, ?, ?)";
 
-$stmt = $conn->prepare($sql);
-$result = $stmt->execute([$id_usuario, $nome, $urlfoto, $nome_mercado, $preco]);
+try {
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute([$id_usuario, $nome, $urlfoto, $nome_mercado, $preco]);
+} catch (Exception $e) {
+    $result = false;
+    $error = $e->getMessage();
+}
+
+
 
 ?>
 <main class="main main-add">
@@ -41,37 +48,21 @@ $result = $stmt->execute([$id_usuario, $nome, $urlfoto, $nome_mercado, $preco]);
 
         if ($result == true) {
             //Deu certo
-        ?>
-            <h1>Seu item foi adicionado com sucesso!</h1>
-            <?php
-            if (!$urlfoto) {
-            ?>
-                <td><img class="img-item atr-foto" src="https://img.icons8.com/pastel-glyph/64/open-box.png" alt="<?= $nome; ?>" width="50" height="50"></td>
-            <?php
-            } else {
-            ?>
-                <img class="img-item" width="50" height="50" src="<?= $urlfoto; ?>" alt="<?= $nome; ?>" />
-            <?php
-            }
-            ?>
-            <h4>Nome: <span class="atributo-item"><?= $nome; ?></span></h4>
-            <h4>URL Foto: <span class="atributo-item"><?= $urlfoto; ?></span></h4>
-            <h4>Nome do Mercado: <span class="atributo-item"><?= $nome_mercado; ?></span></h4>
-            <h4>Preço: <span class="atributo-item">R$<?= $preco; ?></span></h4>
-    </div>
-<?php
+
+            $_SESSION["result-add"] = true;
         } else {
             //Não deu certo, erro
-            $errorArray = $stmt->errorInfo();
-?>
-    <h1>Falha ao efetuar gravação.</h1>
-    <p><?= $errorArray[2]; ?></p>
-    </div>
+            //tratamento de mensagem de erro
 
-<?php
-
+            if (stripos($error, "type") !== false) {
+                $error = "Tipo de valor inválido";
+            }
+            $_SESSION["result-add"] = false;
+            $_SESSION["erro"] = $error;
         }
-?>
+
+        redireciona("home.php");
+        ?>
 
 
 </main>
@@ -80,10 +71,6 @@ $result = $stmt->execute([$id_usuario, $nome, $urlfoto, $nome_mercado, $preco]);
 
 <?php
 
-if ($result == true) {
-    redireciona("home.php");
-    die();
-}
 
 require 'footer-system.php'
 

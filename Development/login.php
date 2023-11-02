@@ -38,25 +38,6 @@ if (isset($_SESSION['restrito']) && $_SESSION['restrito']) {
 }
 
 
-if (isset($_SESSION['logado']) && $_SESSION['logado']) {
-?>
-
-    <main class="main main-add">
-
-
-        <div class="item-confirm">
-
-            <h4>Conta criada com sucesso.</h4>
-            <hr class="hr-mb">
-            <h1 class="destaque">Faça login para entrar!</h1>
-
-
-    </main>
-
-<?php
-    unset($_SESSION['logado']);
-}
-
 if (isset($_SESSION['erro-login']) && $_SESSION['erro-login']) {
 ?>
 
@@ -72,9 +53,68 @@ if (isset($_SESSION['erro-login']) && $_SESSION['erro-login']) {
 
     </main>
 
-<?php
+    <?php
     unset($_SESSION['erro-login']);
 }
+
+if (isset($_SESSION['result'])) {
+    if ($_SESSION['result']) {
+        //SE DEU CERTO, SE O RESULT FOR TRUE
+
+        if (isset($_SESSION['logado']) && $_SESSION['logado']) {
+    ?>
+
+            <main class="main main-add">
+
+
+                <div class="item-confirm">
+
+                    <h4>Conta criada com sucesso.</h4>
+                    <hr class="hr-mb">
+                    <h1 class="destaque">Faça login para entrar!</h1>
+
+
+            </main>
+
+        <?php
+            unset($_SESSION['logado']);
+        }
+    } else {
+        $erro = $_SESSION['erro'];
+        unset($_SESSION['erro']);
+
+        ?>
+
+        <main class="main main-add">
+
+
+            <div class="item-confirm">
+
+                <h4>Erro ao cadastrar.</h4>
+                <hr class="hr-mb">
+                <h1 class="destaque"><?php echo $erro ?></h1>
+
+
+        </main>
+
+<?php
+    }
+    unset($_SESSION['result']);
+}
+
+
+if (isset($_SESSION['result-login'])) {
+
+    if ($_SESSION['result-login']) {
+        //SE LOGIN DEU CERTO
+    } else {
+        $erro = $_SESSION['erro'];
+        unset($_SESSION['erro']);
+    }
+    unset($_SESSION['result-login']);
+}
+
+
 
 ?>
 <main class="main-login main">

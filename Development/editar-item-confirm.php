@@ -27,9 +27,16 @@ $id_usuario = id_usuario();
 
 $sql = "UPDATE itens SET nome = ?, urlfoto = ?, nome_mercado = ?, preco = ? WHERE id_item = ? AND id_usuario = ?";
 
-$stmt = $conn->prepare($sql);
-$result = $stmt->execute([$nome, $urlfoto, $nome_mercado, $preco, $id_item, $id_usuario]);
-$count = $stmt->rowCount();
+try {
+    $stmt = $conn->prepare($sql);
+    $result = $stmt->execute([$nome, $urlfoto, $nome_mercado, $preco, $id_item, $id_usuario]);
+    $count = $stmt->rowCount();
+} catch (Exception $e) {
+    $result = false;
+    $error = $e->getMessage();
+}
+
+
 
 ?>
 <main class="main main-add">
@@ -39,6 +46,25 @@ $count = $stmt->rowCount();
         <h1>Confirmação de Alteração</h1>
         <hr class="hr-mb">
 
+        <?php
+
+        if ($result == true) {
+            //Deu certo
+
+            $_SESSION["result-edit"] = true;
+        } else {
+            //Não deu certo, erro
+            //tratamento de mensagem de erro
+
+            if (stripos($error, "type") !== false) {
+                $error = "Tipo de valor inválido";
+            }
+            $_SESSION["result-edit"] = false;
+            $_SESSION["erro"] = $error;
+        }
+
+        redireciona("home.php");
+        ?>
 
         <?php
 
@@ -94,7 +120,7 @@ $count = $stmt->rowCount();
 if ($result == true && $count >= 1) {
     redireciona("home.php");
     die();
-} 
+}
 require 'footer-system.php'
 
 ?>
