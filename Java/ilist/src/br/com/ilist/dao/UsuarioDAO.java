@@ -34,8 +34,8 @@ public boolean inserirUsuario(UsuarioDTO usuarioDTO){
         comando = "Insert into usuarios(nome_usuario, "
                 + "email, senha) values ('" 
                 + usuarioDTO.getNome_usuario() + "', '" 
-                + usuarioDTO.getEmail() + "', '"
-                + "md5('" + usuarioDTO.getSenha() + "'));";
+                + usuarioDTO.getEmail() + "', "
+                + "crypt('" + usuarioDTO.getSenha() + "', gen_salt('bf', 8)));";
            System.out.println(comando);
             stmt.execute(comando);
         
@@ -61,7 +61,7 @@ public int logarUsuario(UsuarioDTO usuarioDTO){
         stmt = ConexaoDAO.con.createStatement();
         comando = "SELECT u.id_usuario FROM usuarios u"
                 + " WHERE u.email = '" + usuarioDTO.getEmail() + "' "
-                + "and u.senha = md5('" + usuarioDTO.getSenha() + "')";
+                + "and u.senha = crypt('" + usuarioDTO.getSenha() + "', u.senha)";
         
         rs = null;
         rs = stmt.executeQuery(comando);
@@ -89,7 +89,7 @@ public boolean editarUsuario(UsuarioDTO usuarioDTO){
         
         String comando = "UPDATE usuarios "
                 + "SET nome_usuario = '" + usuarioDTO.getNome_usuario() + "', "
-                + "senha = md5('" + usuarioDTO.getSenha() + "'),"
+                + "senha = crypt('" + usuarioDTO.getSenha() + "', gen_salt('bf', 8)),"
                 + "email = '" + usuarioDTO.getEmail() 
                 + "' WHERE id_usuario = '" + usuarioDTO.getId_usuario() + "';";
         

@@ -45,7 +45,7 @@ public boolean inserirItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO){
                 + "'" + itemDTO.getNome() + "', '"
                 + itemDTO.getPreco() + "', '"
                 + itemDTO.getNome_mercado() + "', "
-                + itemDTO.getId_usuario() + ");";
+                + usuarioDTO.getId_usuario() + ");";
         
  System.out.println(comando);
         stmt.execute(comando);
