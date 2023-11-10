@@ -32,7 +32,8 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
     /**
      * Creates new form ItemVIEW
      */
-    public ItemVIEW() {
+    public ItemVIEW(UsuarioDTO usuarioDTO) {
+        this.usuarioDTO = usuarioDTO;
         initComponents();
         
         this.setSize(758, 560);
@@ -370,7 +371,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
             itemDTO.setNome(nome.getText());
             itemDTO.setNome_mercado(nome_mercado.getText());
             itemDTO.setPreco(preco.getText());
-            itemDTO.setId_usuario(usuarioDTO.getId_usuario());
+            //itemDTO.setId_usuario(usuarioDTO.getId_usuario());
 
             JOptionPane.showMessageDialog(null,
                     itemCTR.inserirItem(itemDTO, usuarioDTO)

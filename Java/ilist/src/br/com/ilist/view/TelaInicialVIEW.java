@@ -10,13 +10,15 @@ import java.awt.Image;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import br.com.ilist.dto.UsuarioDTO;
 
 public class TelaInicialVIEW extends javax.swing.JFrame {
-
+UsuarioDTO usuarioDTO = new UsuarioDTO();
     /**
      * Creates new form PrincipalVIEW
      */
-    public TelaInicialVIEW() {
+    public TelaInicialVIEW(UsuarioDTO usuarioDTO) {
+        this.usuarioDTO = usuarioDTO;
         initComponents();
         this.setResizable(false);
     }
@@ -111,7 +113,7 @@ public class TelaInicialVIEW extends javax.swing.JFrame {
 
     private void itemMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMenuItemActionPerformed
         // TODO add your handling code here:
-        ItemVIEW itemVIEW = new ItemVIEW();
+        ItemVIEW itemVIEW = new ItemVIEW(usuarioDTO);
         this.desktopPane.add(itemVIEW);
         itemVIEW.setVisible(true);
         itemVIEW.setPosicao();

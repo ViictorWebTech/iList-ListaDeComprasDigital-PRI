@@ -184,7 +184,7 @@ public class LoginVIEW extends javax.swing.JFrame {
         usuarioDTO.setId_usuario(usuarioCTR.logarUsuario(usuarioDTO));
         if(usuarioDTO.getId_usuario() > 0){
             this.dispose();
-            new TelaInicialVIEW().setVisible(true);
+            new TelaInicialVIEW(usuarioDTO).setVisible(true);
         }
         else{
             JOptionPane.showMessageDialog(null, "Login ou Senha \nIncorreto!!!");
