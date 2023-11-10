@@ -165,7 +165,20 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
             new String [] {
                 "Item na Lista", "Mercado", "Preço"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jtl_consultar_item.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtl_consultar_itemMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtl_consultar_item);
 
         btnPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/pesquisar.png"))); // NOI18N
@@ -217,6 +230,11 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
 
         btnRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/excluir.png"))); // NOI18N
         btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/ilist/view/imagens/cancelar.png"))); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -270,14 +288,16 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(131, 131, 131)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,9 +306,9 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
@@ -328,7 +348,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
                 if(gravar_alterar==2){
                     if(verificaPreenchimento()){
                         alterar();
-                        //preencheTabela(pesquisa_nome_pes.getText().toUpperCase());
+                        preencheTabela(pesquisa_nome.getText().toUpperCase());
                         gravar_alterar=0;
                         limpaCampos();
                         liberaCampos(false);
@@ -363,6 +383,21 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
         liberaBotoes(true, false, false, false);
         gravar_alterar=0;
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void jtl_consultar_itemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtl_consultar_itemMouseClicked
+        // TODO add your handling code here:
+            preencheCampos(Integer.parseInt(String.valueOf(jtl_consultar_item.getValueAt(jtl_consultar_item.getSelectedRow(), 0))));
+        liberaBotoes(false, true, true, true);
+    }//GEN-LAST:event_jtl_consultar_itemMouseClicked
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        // TODO add your handling code here:
+         excluir();
+        limpaCampos();
+        liberaCampos(false);
+        liberaBotoes(true, false, false, false);
+        preencheTabela(pesquisa_nome.getText());
+    }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void gravar() {
 
@@ -402,7 +437,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
     }
     
         private void excluir(){
-       if(JOptionPane.showConfirmDialog(null, "Deseja Realmente excluir o Carro?","Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+       if(JOptionPane.showConfirmDialog(null, "Deseja Realmente excluir o Item?","Aviso", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null,
                     itemCTR.removerItem(itemDTO, usuarioDTO)
             );

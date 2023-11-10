@@ -139,7 +139,7 @@ switch(opcao){
 //                + "ORDER BY '" + itemDTO.getNome() + "';";
         
          comando = "SELECT nome, nome_mercado, preco FROM itens i, usuarios u" 
-                + " WHERE i.nome like '" + itemDTO.getNome() + "%'" 
+                + " WHERE i.nome ilike '%" + itemDTO.getNome() + "%'" 
                 + "AND i.id_usuario = " + usuarioDTO.getId_usuario() + " ORDER BY nome;";
          break;
 //    case 2: 
@@ -150,7 +150,7 @@ switch(opcao){
 //         break;
     case 2:
         comando = "SELECT nome, nome_mercado, preco from itens" +
-                "WHERE id_item like " + itemDTO.getId_item() + "%"
+                "WHERE id_item = " + itemDTO.getId_item() + "%"
                 + "AND id_usuario = " + usuarioDTO.getId_usuario() + " ORDER BY id_item;";
         
         break;
