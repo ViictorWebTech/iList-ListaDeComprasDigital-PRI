@@ -47,7 +47,7 @@ public boolean inserirItem(ItemDTO itemDTO, UsuarioDTO usuarioDTO){
                 + itemDTO.getNome_mercado() + "', "
                 + usuarioDTO.getId_usuario() + ");";
         
- System.out.println(comando);
+ 
         stmt.execute(comando);
         
         ConexaoDAO.con.commit();
@@ -138,7 +138,7 @@ switch(opcao){
 //                + "' WHERE u.id_usuario = '" + usuarioDTO.getId_usuario() + "' "
 //                + "ORDER BY '" + itemDTO.getNome() + "';";
         
-         comando = "SELECT nome, nome_mercado, preco FROM itens i, usuarios u" 
+         comando = "SELECT id_item, nome, nome_mercado, preco FROM itens i, usuarios u" 
                 + " WHERE i.nome ilike '%" + itemDTO.getNome() + "%'" 
                 + "AND i.id_usuario = " + usuarioDTO.getId_usuario() + " ORDER BY nome;";
          break;
@@ -149,14 +149,13 @@ switch(opcao){
 //                + "ORDER BY '" + itemDTO.getNome() + "';";
 //         break;
     case 2:
-        comando = "SELECT nome, nome_mercado, preco from itens" +
-                "WHERE id_item = " + itemDTO.getId_item() + "%"
-                + "AND id_usuario = " + usuarioDTO.getId_usuario() + " ORDER BY id_item;";
+        comando = "SELECT id_item, nome, nome_mercado, preco from itens " +
+                "WHERE id_item = " + itemDTO.getId_item() + " " + 
+                "AND id_usuario = " + usuarioDTO.getId_usuario() + " ORDER BY id_item;";
         
         break;
 }
 
-System.out.println(comando);
 rs = stmt.executeQuery(comando);
         return rs;
     }//Fecha Try

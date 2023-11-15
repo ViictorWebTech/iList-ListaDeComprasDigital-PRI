@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/dao/ItemDAO.java</file>
-            <file>file:/C:/xampp/htdocs/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/dao/UsuarioDAO.java</file>
-            <file>file:/C:/xampp/htdocs/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/LoginVIEW.java</file>
-            <file>file:/C:/xampp/htdocs/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/ItemVIEW.java</file>
-            <file>file:/C:/xampp/htdocs/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/TelaInicialVIEW.java</file>
-            <file>file:/C:/xampp/htdocs/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/dto/UsuarioDTO.java</file>
-            <file>file:/C:/xampp/htdocs/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/ctr/UsuarioCTR.java</file>
+            <file>file:/C:/xampp/htdocs/pri-git/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/dao/ItemDAO.java</file>
+            <file>file:/C:/xampp/htdocs/pri-git/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/ItemVIEW.java</file>
+            <file>file:/C:/xampp/htdocs/pri-git/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/view/LoginVIEW.java</file>
+            <file>file:/C:/xampp/htdocs/pri-git/ListaDeComprasInterativa-PRI/Java/ilist/src/br/com/ilist/ctr/ItemCTR.java</file>
         </group>
     </open-files>
 </project-private>

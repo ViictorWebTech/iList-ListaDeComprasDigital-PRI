@@ -36,7 +36,7 @@ public boolean inserirUsuario(UsuarioDTO usuarioDTO){
                 + usuarioDTO.getNome_usuario() + "', '" 
                 + usuarioDTO.getEmail() + "', "
                 + "crypt('" + usuarioDTO.getSenha() + "', gen_salt('bf', 8)));";
-           System.out.println(comando);
+           
             stmt.execute(comando);
         
         ConexaoDAO.con.commit();
