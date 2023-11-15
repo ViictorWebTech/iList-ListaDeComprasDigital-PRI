@@ -163,11 +163,11 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
 
             },
             new String [] {
-                "Item na Lista", "Mercado", "Preço"
+                "ID", "Item na Lista", "Mercado", "Preço"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -453,6 +453,7 @@ public class ItemVIEW extends javax.swing.JInternalFrame {
             rs = itemCTR.selecionarItem(itemDTO, usuarioDTO, 1);
             while (rs.next()) {
                 modelo_jtl_consultar_item.addRow(new Object[]{
+                    rs.getString("id_item"),
                     rs.getString("nome"),
                     rs.getString("nome_mercado"),
                     rs.getString("preco"),
