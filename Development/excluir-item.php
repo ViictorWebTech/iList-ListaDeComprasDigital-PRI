@@ -21,7 +21,10 @@ if (id_usuario() != $id_usuario) {
 }
 
 
-
+if(empty($id_usuario) || empty($id_item) ){
+    redireciona('home.php');
+    die();
+  }
 
 $sql = "DELETE FROM itens WHERE id_item = ? AND id_usuario = ?";
 

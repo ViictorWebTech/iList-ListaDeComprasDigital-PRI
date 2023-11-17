@@ -13,6 +13,11 @@ $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
 $senha = filter_input(INPUT_POST, "senha", FILTER_SANITIZE_SPECIAL_CHARS);
 
 
+if( empty($email) || empty($senha) ){
+  redireciona('login.php');
+  die();
+}
+
 $sql = "SELECT nome_usuario, urlfoto_usuario, senha, id_usuario FROM usuarios WHERE email = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$email]);

@@ -18,6 +18,12 @@ $senha = filter_input(INPUT_POST, "senha");
 $urlfoto_usuario = filter_input(INPUT_POST, "urlfoto_usuario", FILTER_SANITIZE_URL);
 
 
+
+if(empty($nome_usuario) || empty($email) || empty($senha) ){
+  redireciona('cadastro.php');
+  die();
+}
+
 $sql = "INSERT INTO usuarios(nome_usuario, email, senha, urlfoto_usuario) 
         VALUES (?, ?, crypt(?, gen_salt('bf', 8)), ?)";
 

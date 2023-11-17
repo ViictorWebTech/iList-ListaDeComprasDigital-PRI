@@ -21,6 +21,10 @@ $urlfoto = filter_input(INPUT_POST, "urlfoto", FILTER_SANITIZE_URL);
 $nome_mercado = filter_input(INPUT_POST, "nome_mercado", FILTER_SANITIZE_SPECIAL_CHARS);
 $preco = filter_input(INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_FLOAT);
 
+if(empty($id_usuario) || empty($nome) || empty($nome_mercado) || empty($preco) ){
+    redireciona('home.php');
+    die();
+  }
 
 $sql = "INSERT INTO itens(id_usuario, nome, urlfoto, nome_mercado, preco) 
         VALUES (?, ?, ?, ?, ?)";
