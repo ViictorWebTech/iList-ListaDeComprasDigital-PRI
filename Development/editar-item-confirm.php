@@ -24,6 +24,10 @@ $nome_mercado = filter_input(INPUT_POST, "nome_mercado", FILTER_SANITIZE_SPECIAL
 $preco = filter_input(INPUT_POST, "preco", FILTER_SANITIZE_NUMBER_INT);
 $id_usuario = id_usuario();
 
+if(empty($id_usuario) || empty($nome) || empty($nome_mercado) || empty($preco) || empty($id_item) ){
+    redireciona('home.php');
+    die();
+  }
 
 $sql = "UPDATE itens SET nome = ?, urlfoto = ?, nome_mercado = ?, preco = ? WHERE id_item = ? AND id_usuario = ?";
 
